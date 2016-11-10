@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class PSpell | KWA Database</title>
+
+	<script type="text/javascript" src="resources/combined.js?455925727"></script>
+	<script type="text/javascript" src="elementlist.js?29214772"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="package-MCFileManager.html">MCFileManager<span></span></a>
+						<ul>
+				<li><a href="package-MCFileManager.filesystems.html">filesystems</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="package-MCManager.html">MCManager<span></span></a>
+						<ul>
+				<li class="active"><a href="package-MCManager.includes.html">includes</a>
+						</li>
+				<li><a href="package-MCManager.utils.html">utils</a>
+						</li>
+							</ul></li>
+				<li><a href="package-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-EnchantSpell.html">EnchantSpell</a></li>
+				<li><a href="class-GoogleSpell.html">GoogleSpell</a></li>
+				<li class="active"><a href="class-PSpell.html">PSpell</a></li>
+				<li><a href="class-PSpellShell.html">PSpellShell</a></li>
+				<li><a href="class-SpellChecker.html">SpellChecker</a></li>
+			</ul>
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-debug.html">debug</a></li>
+				<li><a href="function-error.html">error</a></li>
+				<li><a href="function-fatal.html">fatal</a></li>
+				<li><a href="function-getLogger.html">getLogger</a></li>
+				<li><a href="function-getRequestParam.html">getRequestParam</a></li>
+				<li><a href="function-info.html">info</a></li>
+				<li><a href="function-warn.html">warn</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-MCManager.includes.html" title="Summary of MCManager\includes"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class PSpell</h1>
+
+
+	<div class="description">
+	
+<p>$Id: editor_plugin_src.js 201 2007-02-12 15:56:56Z spocke $</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-SpellChecker.html"><span>SpellChecker</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>PSpell</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-MCManager.html">MCManager</a>\<a href="package-MCManager.includes.html">includes</a><br />
+
+				<b>Copyright:</b>
+				<br />
+				<b>Author:</b>
+				Moxiecode<br />
+		<b>Located at</b> <a href="source-class-PSpell.html#3-80" title="Go to source code">spellchecker/classes/PSpell.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="checkWords" id="_checkWords">
+
+		<td class="attributes"><code>
+			 public 
+			{Array}
+			&amp;
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_checkWords">#</a>
+		<code><a href="source-class-PSpell.html#11-28" title="Go to source code">checkWords</a>( <span>{String} <var>$lang</var></span>, <span>{Array} <var>$words</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Spellchecks an array of words.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Spellchecks an array of words.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$lang</var></dt>
+					<dd><code>{String}</code><br>$lang Language code like sv or en.</dd>
+					<dt><var>$words</var></dt>
+					<dd><code>{Array}</code><br>$words Array of words to spellcheck.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>{Array}</code><br>Array of misspelled words.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-SpellChecker.html#_checkWords">SpellChecker::checkWords()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSuggestions" id="_getSuggestions">
+
+		<td class="attributes"><code>
+			 public 
+			{Array}
+			&amp;
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSuggestions">#</a>
+		<code><a href="source-class-PSpell.html#30-44" title="Go to source code">getSuggestions</a>( <span>{String} <var>$lang</var></span>, <span>{String} <var>$word</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Returns suggestions of for a specific word.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Returns suggestions of for a specific word.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$lang</var></dt>
+					<dd><code>{String}</code><br>$lang Language code like sv or en.</dd>
+					<dt><var>$word</var></dt>
+					<dd><code>{String}</code><br>$word Specific word to get suggestions for.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>{Array}</code><br>Array of suggestions for the specified word.<br />
+				</div>
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-SpellChecker.html#_getSuggestions">SpellChecker::getSuggestions()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_getPLink" id="__getPLink">
+
+		<td class="attributes"><code>
+			 public 
+			
+			&amp;
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__getPLink">#</a>
+		<code><a href="source-class-PSpell.html#46-79" title="Go to source code">_getPLink</a>( <span>mixed <var>$lang</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Opens a link for pspell.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Opens a link for pspell.</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-SpellChecker.html#methods">SpellChecker</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-SpellChecker.html#_SpellChecker">SpellChecker()</a>, 
+			<a href="class-SpellChecker.html#_loopback">loopback()</a>, 
+			<a href="class-SpellChecker.html#_throwError">throwError()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		KWA Database API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

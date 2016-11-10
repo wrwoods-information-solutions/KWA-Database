@@ -1,0 +1,21 @@
+<?php
+$DB = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]["database"]['server'],$_SESSION["preferences"]["database"]["dbname"],$_SESSION["preferences"]["database"]["user"], $_SESSION["preferences"]["database"]["password"],$_SESSION["preferences"]["database"]["port"]);
+$result1 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result2= $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result3 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result4 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result5 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result6 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result7= $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result8 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result9 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result10 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result11 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result12= $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result13 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result14 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result15 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result16 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result17 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result18 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');
+$result19 = $DB->query('ALTER TABLE `address` ADD `createdby` VARCHAR(10) NOT NULL AFTER `creationdate`');

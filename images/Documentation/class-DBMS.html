@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class DBMS | KWA Database</title>
+
+	<script type="text/javascript" src="resources/combined.js?455925727"></script>
+	<script type="text/javascript" src="elementlist.js?29214772"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="package-MCFileManager.html">MCFileManager<span></span></a>
+						<ul>
+				<li><a href="package-MCFileManager.filesystems.html">filesystems</a>
+						</li>
+							</ul></li>
+				<li><a href="package-MCManager.html">MCManager<span></span></a>
+						<ul>
+				<li><a href="package-MCManager.includes.html">includes</a>
+						</li>
+				<li><a href="package-MCManager.utils.html">utils</a>
+						</li>
+							</ul></li>
+				<li class="active"><a href="package-None.html">None</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-codes.html">codes</a></li>
+				<li><a href="class-DataGrid.html">DataGrid</a></li>
+				<li class="active"><a href="class-DBMS.html">DBMS</a></li>
+				<li><a href="class-displaydata.html">displaydata</a></li>
+				<li><a href="class-Displaygrid.html">Displaygrid</a></li>
+				<li><a href="class-DisplayStatus.html">DisplayStatus</a></li>
+				<li><a href="class-log.html">log</a></li>
+				<li><a href="class-login.html">login</a></li>
+				<li><a href="class-menu.html">menu</a></li>
+				<li><a href="class-messages.html">messages</a></li>
+				<li><a href="class-person.html">person</a></li>
+				<li><a href="class-preferences.html">preferences</a></li>
+				<li><a href="class-Template.html">Template</a></li>
+				<li><a href="class-validate.html">validate</a></li>
+			</ul>
+
+
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-mb_substr.html">mb_substr</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-None.html" title="Summary of None"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class DBMS</h1>
+
+
+	<div class="description">
+	
+<hr />
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		
+
+				<b>Author:</b>
+				W.R.(Ric)Woods<br />
+				<b>Version:</b>
+				1.0<br />
+				<b>Brief:</b>
+				Use this class to connect easily to multiple databases types.<br />
+				<b>Date:</b>
+				March 2013 *****************************************************<br />
+				<b>File:</b>
+				class.pdodatabase.php<br />
+		<b>Located at</b> <a href="source-class-DBMS.html#3-642" title="Go to source code">class.pdodatabase.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-DBMS.html#37-53" title="Go to source code">__construct</a>( <span>string <var>$database_type</var></span>, <span>string <var>$host</var></span>, <span>string <var>$database</var></span>, <span>string <var>$user</var></span>, <span>string <var>$password</var></span>, <span>string <var>$port</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$database_type</var></dt>
+					<dd><code>string</code><br>$database_type the name of the database type.</dd>
+					<dt><var>$host</var></dt>
+					<dd><code>string</code><br>$host the host of the database.</dd>
+					<dt><var>$database</var></dt>
+					<dd><code>string</code><br>$database the name of the database.</dd>
+					<dt><var>$user</var></dt>
+					<dd><code>string</code><br>$user the name of the user for the database.</dd>
+					<dt><var>$password</var></dt>
+					<dd><code>string</code><br>$password the passord of the user for the database.</dd>
+					<dt><var>$port</var></dt>
+					<dd><code>string</code><br>$port the port of the database not necessary get default ports.</dd>
+				</dl></div>
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						Constructor, Initialize and connect to the database.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="Cnxn" id="_Cnxn">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_Cnxn">#</a>
+		<code><a href="source-class-DBMS.html#55-117" title="Go to source code">Cnxn</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>$con the conecttion required by sql statements.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						Cnxn, connect to the database.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="properties" id="_properties">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_properties">#</a>
+		<code><a href="source-class-DBMS.html#119-128" title="Go to source code">properties</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						properties, print connection properties.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="drivers" id="_drivers">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_drivers">#</a>
+		<code><a href="source-class-DBMS.html#130-134" title="Go to source code">drivers</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						properties, print all drivers capables for the server.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="transaction" id="_transaction">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_transaction">#</a>
+		<code><a href="source-class-DBMS.html#136-161" title="Go to source code">transaction</a>( <span>string <var>$type</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd><code>string</code><br>$type shortcut for trasaction to execute. i.e: B=begin, C=commit &amp;
+R=rollback.</dd>
+				</dl></div>
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						transaction, execute the transactional operations.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="query" id="_query">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_query">#</a>
+		<code><a href="source-class-DBMS.html#163-182" title="Go to source code">query</a>( <span>string <var>$sql_statement</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sql_statement</var></dt>
+					<dd><code>string</code><br>$sql_statement query string to execute.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>$query contains result set.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						query, iterate over rows.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="query_secure" id="_query_secure">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_query_secure">#</a>
+		<code><a href="source-class-DBMS.html#184-230" title="Go to source code">query_secure</a>( <span>string <var>$sql_statement</var></span>, <span>string <var>$params</var></span>, <span>string <var>$fetch_rows</var> = <span class="php-keyword1">false</span></span>, <span>string <var>$unnamed</var> = <span class="php-keyword1">false</span></span>, <span>string <var>$delimiter</var> = <span class="php-quote">&quot;|&quot;</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sql_statement</var></dt>
+					<dd><code>string</code><br>$sql_statement query string to execute.</dd>
+					<dt><var>$params</var></dt>
+					<dd><code>string</code><br>$params are necessary for query execute.</dd>
+					<dt><var>$fetch_rows</var></dt>
+					<dd><code>string</code><br>$fetch_rows true if you need the result set.</dd>
+					<dt><var>$unnamed</var></dt>
+					<dd><code>string</code><br>$unnamed only if your params are annonymous.</dd>
+					<dt><var>$delimiter</var></dt>
+					<dd><code>string</code><br>$delimiter you can specify another delimiter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>$fetchAll contains result set.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						query_secure, prevent and avoid sql injections.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="query_first" id="_query_first">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_query_first">#</a>
+		<code><a href="source-class-DBMS.html#232-251" title="Go to source code">query_first</a>( <span>string <var>$sql_statement</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sql_statement</var></dt>
+					<dd><code>string</code><br>$sql_statement query string to execute.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>$fetch contains result set.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						query_first, fetch the first row.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="query_single" id="_query_single">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_query_single">#</a>
+		<code><a href="source-class-DBMS.html#253-272" title="Go to source code">query_single</a>( <span>string <var>$sql_statement</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sql_statement</var></dt>
+					<dd><code>string</code><br>$sql_statement query string to execute.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>$fetchColumn contains result set.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						query_single, select single table cell from first record.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rowcount" id="_rowcount">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rowcount">#</a>
+		<code><a href="source-class-DBMS.html#274-296" title="Go to source code">rowcount</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>with the total rows.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						rowcount, total rows from latest query.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="columns" id="_columns">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_columns">#</a>
+		<code><a href="source-class-DBMS.html#298-321" title="Go to source code">columns</a>( <span>string <var>$table</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table must specify table name for extract columns.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>$column with all columns name of table.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						columns, name columns as vector.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="insert" id="_insert">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_insert">#</a>
+		<code><a href="source-class-DBMS.html#323-350" title="Go to source code">insert</a>( <span>string <var>$table</var></span>, <span>string <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table must specify table name for insert into.</dd>
+					<dt><var>$data</var></dt>
+					<dd><code>string</code><br>$data required for execute insert with data.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>with the newest id (must be autonumeric).<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						insert, insert and get newest created id.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="update" id="_update">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_update">#</a>
+		<code><a href="source-class-DBMS.html#352-370" title="Go to source code">update</a>( <span>string <var>$table</var></span>, <span>string <var>$data</var></span>, <span>string <var>$condition</var> = <span class="php-quote">&quot;&quot;</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table must specify table name for update.</dd>
+					<dt><var>$data</var></dt>
+					<dd><code>string</code><br>$data required for execute update info.</dd>
+					<dt><var>$condition</var></dt>
+					<dd><code>string</code><br>$condition only if is required for the statement.</dd>
+				</dl></div>
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						update, replace information in the table.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-DBMS.html#372-389" title="Go to source code">delete</a>( <span>string <var>$table</var></span>, <span>string <var>$condition</var> = <span class="php-quote">&quot;&quot;</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table must specify table name for delete rows.</dd>
+					<dt><var>$condition</var></dt>
+					<dd><code>string</code><br>$condition only if is required for the statement.</dd>
+				</dl></div>
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						delete, delete information in the table.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="execute" id="_execute">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_execute">#</a>
+		<code><a href="source-class-DBMS.html#391-408" title="Go to source code">execute</a>( <span>string <var>$sp_query</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sp_query</var></dt>
+					<dd><code>string</code><br>$sp_query is the sp to execute.</dd>
+				</dl></div>
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						execute, this method is special for execute store procedures.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLatestId" id="_getLatestId">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLatestId">#</a>
+		<code><a href="source-class-DBMS.html#410-443" title="Go to source code">getLatestId</a>( <span>string <var>$table</var></span>, <span>string <var>$field</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table must specify table name for this operation.</dd>
+					<dt><var>$field</var></dt>
+					<dd><code>string</code><br>$field is the column name that you need.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>with the latest id inserted.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						getLatestId, for retrieve the newest id in the table.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ShowTables" id="_ShowTables">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ShowTables">#</a>
+		<code><a href="source-class-DBMS.html#445-482" title="Go to source code">ShowTables</a>( <span>string <var>$database</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$database</var></dt>
+					<dd><code>string</code><br>$database must specify database for get tables.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>with the result set with table names in the database.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						ShowTables, for retrieve all tables in the database.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="ShowDBS" id="_ShowDBS">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_ShowDBS">#</a>
+		<code><a href="source-class-DBMS.html#484-518" title="Go to source code">ShowDBS</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br>with the result set with all databases in your server.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						ShowDBS, for retrieve all databases in the server.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getError" id="_getError">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getError">#</a>
+		<code><a href="source-class-DBMS.html#520-524" title="Go to source code">getError</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						getError, print the latest error ocurred in the connection.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="disconnect" id="_disconnect">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_disconnect">#</a>
+		<code><a href="source-class-DBMS.html#526-537" title="Go to source code">disconnect</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						disconnect, ends your connection, never forget this method for server
+performance.<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="stmntCount" id="_stmntCount">
+
+		<td class="attributes"><code>
+			 private 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_stmntCount">#</a>
+		<code><a href="source-class-DBMS.html#539-576" title="Go to source code">stmntCount</a>( <span>string <var>$sql_statement</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$sql_statement</var></dt>
+					<dd><code>string</code><br>sql_statement is a string with your query. IMPORTANT: sql_statement not works if
+contains: group by, having...</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>is the new query with count(*) structure.<br />
+				</div>
+
+
+				<h4>Brief</h4>
+				<div class="list">
+						stmntCount, build a query string with count structure. Is used by rowcount
+method<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="select" id="_select">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_select">#</a>
+		<code><a href="source-class-DBMS.html#577-608" title="Go to source code">select</a>( <span>mixed <var>$fields</var></span>, <span>string <var>$table</var></span>, <span>string <var>$where</var> = <span class="php-keyword1">false</span></span>, <span>string <var>$orderby</var> = <span class="php-keyword1">false</span></span>, <span>string <var>$limit</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Select</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Select</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fields</var></dt>
+					<dd><code>mixed</code><br>$fields Array or string of fields to retrieve</dd>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table Table to retrieve from</dd>
+					<dt><var>$where</var></dt>
+					<dd><code>string</code><br>$where Where condition</dd>
+					<dt><var>$orderby</var></dt>
+					<dd><code>string</code><br>$orderby Order by clause</dd>
+					<dt><var>$limit</var></dt>
+					<dd><code>string</code><br>$limit Limit condition</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Array of rows<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="selectOne" id="_selectOne">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_selectOne">#</a>
+		<code><a href="source-class-DBMS.html#610-624" title="Go to source code">selectOne</a>( <span>mixed <var>$fields</var></span>, <span>string <var>$table</var></span>, <span>string <var>$where</var> = <span class="php-keyword1">false</span></span>, <span>string <var>$orderby</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Selects one row</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Selects one row</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$fields</var></dt>
+					<dd><code>mixed</code><br>$fields Array or string of fields to retrieve</dd>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table Table to retrieve from</dd>
+					<dt><var>$where</var></dt>
+					<dd><code>string</code><br>$where Where condition</dd>
+					<dt><var>$orderby</var></dt>
+					<dd><code>string</code><br>$orderby Order by clause</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Row values<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="selectOneValue" id="_selectOneValue">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_selectOneValue">#</a>
+		<code><a href="source-class-DBMS.html#626-640" title="Go to source code">selectOneValue</a>( <span>mixed <var>$field</var></span>, <span>string <var>$table</var></span>, <span>string <var>$where</var> = <span class="php-keyword1">false</span></span>, <span>string <var>$orderby</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Selects one value from one row</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Selects one value from one row</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$field</var></dt>
+					<dd><code>mixed</code><br>$field Name of field to retrieve</dd>
+					<dt><var>$table</var></dt>
+					<dd><code>string</code><br>$table Table to retrieve from</dd>
+					<dt><var>$where</var></dt>
+					<dd><code>string</code><br>$where Where condition</dd>
+					<dt><var>$orderby</var></dt>
+					<dd><code>string</code><br>$orderby Order by clause</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Field value<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="database_types" id="$database_types">
+		<td class="attributes"><code>
+			private  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#13-14" title="Go to source code"><var>$database_types</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>(<span class="php-quote">&quot;sqlite2&quot;</span>,<span class="php-quote">&quot;sqlite3&quot;</span>,<span class="php-quote">&quot;sqlsrv&quot;</span>,<span class="php-quote">&quot;mssql&quot;</span>,<span class="php-quote">&quot;mysql&quot;</span>,<span class="php-quote">&quot;pg&quot;</span>,<span class="php-quote">&quot;ibm&quot;</span>,<span class="php-quote">&quot;dblib&quot;</span>,<span class="php-quote">&quot;odbc&quot;</span>,<span class="php-quote">&quot;oracle&quot;</span>,<span class="php-quote">&quot;ifmx&quot;</span>,<span class="php-quote">&quot;fbd&quot;</span>)</code></td>
+		<td class="description"><div>
+			<a href="#$database_types" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable array $database_types with all database supported.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable array $database_types with all database supported.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="host" id="$host">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#15-16" title="Go to source code"><var>$host</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$host" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $host, database server address.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $host, database server address.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="database" id="$database">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#17-18" title="Go to source code"><var>$database</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$database" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $database, database name.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $database, database name.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="user" id="$user">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#19-20" title="Go to source code"><var>$user</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$user" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $user, database user.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $user, database user.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="password" id="$password">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#21-22" title="Go to source code"><var>$password</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$password" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $password, database password.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $password, database password.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="port" id="$port">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#23-24" title="Go to source code"><var>$port</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$port" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $port, database port only if really necessary.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $port, database port only if really necessary.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="database_type" id="$database_type">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#25-26" title="Go to source code"><var>$database_type</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$database_type" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $database_type, important explicit type.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $database_type, important explicit type.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="root_mdb" id="$root_mdb">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#27-28" title="Go to source code"><var>$root_mdb</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$root_mdb" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $root_mbd, path to mdb file for MS Access databases.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $root_mbd, path to mdb file for MS Access databases.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="sql" id="$sql">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#30-31" title="Go to source code"><var>$sql</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$sql" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $sql, query string to execute.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $sql, query string to execute.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="con" id="$con">
+		<td class="attributes"><code>
+			private  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#32-33" title="Go to source code"><var>$con</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$con" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $con, object connection to database.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $con, object connection to database.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="err_msg" id="$err_msg">
+		<td class="attributes"><code>
+			private  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-DBMS.html#34-35" title="Go to source code"><var>$err_msg</var></a>
+		</td>
+		<td class="value"><code><span class="php-quote">&quot;&quot;</span></code></td>
+		<td class="description"><div>
+			<a href="#$err_msg" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Variable $err_msg, always empty if not have errors.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Variable $err_msg, always empty if not have errors.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		KWA Database API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
