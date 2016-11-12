@@ -126,17 +126,17 @@
             </td>
         </tr>
     </table>    
+	<form id="mastermenu" name="mastermenu"  action="setupmastermenu.php" method="post" enctype="multipart/form-data" >	
 	<table width="100%"  border="0" background="Images/HeavenBackground.jpg">
 		<tr>
 			<td height="70">
-				<form id="mastermenu" name="mastermenu"  action="setupmastermenu.php" method="post" enctype="multipart/form-data" >	
         			<?php
 						$validate = new validate;
                                                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"]['New Menu'] = 'New';
  						echo $validate->ComboBox("selectmastermenu","mastermenu",'',"menuname","ASC","menuname","menuname","body",$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"],$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"],$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["menuname"],false,false,"newmenu",$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["mastermenunew"],"20",$_SESSION["preferences"]["database"]["dbname"]);
 					?>
 					<input type="submit" name="refreshmastermenu" value="Refresh">
-				</form>		  </td>
+                       </td>
 		</tr>
 		<tr>
 			<td>
@@ -150,4 +150,5 @@
 			</td>
 		</tr>
         </table>
+        </form>
 </BODY>  
