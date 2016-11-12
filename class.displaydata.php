@@ -474,7 +474,7 @@ class DisplayData {
         {    
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"]; // Last line
         }else{
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"]; // Last line                
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] = ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"]-1); // Last line                
         }    
         $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopstartrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]["firstline"]-1;
 //        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopendrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"]-1;
@@ -934,7 +934,7 @@ class DisplayData {
               $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] < $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['lastline']; 
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] ++) 
         {
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] + 1;
+             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] + 1;
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] == $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"]) 
             {
                 echo '<form id="' . $_SESSION["displaydata"]["name"] . 'inlineedit" name="' . $_SESSION["displaydata"]["name"] . 'inlineedit" method="post" action="' . $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["urlparms"] . '">';
@@ -973,7 +973,7 @@ class DisplayData {
 //            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = 0;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'] ++;
         }
-//       echo '</table>';
+        echo '</tr></table>';
     }
 
     function displaylinestable() {
@@ -1242,7 +1242,7 @@ class DisplayData {
         }
         $saveline = $_POST[$_SESSION['displaydata']["name"] . 'saveline'];
         if (substr($saveline[0], 0, 1) === 'S') {
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = (INT) substr($saveline, 1, strlen($saveline - 1));
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = (INT) substr($saveline[0], 1, strlen($saveline - 1));
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] > $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["noofdblines"]) {
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertrecord"] = true;
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["updaterecord"] = false;
@@ -1641,7 +1641,16 @@ class DisplayData {
                         }
                         break;
                     case self::INLINE_FILE:
-                        $value = $validate->fileComboBox($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['directory'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['css_class'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['PleaseSelect'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['noinput'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['AllowNew'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['newname'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['new']);
+                         $value = $validate->fileComboBox(
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['directory'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['css_class'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['PleaseSelect'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['noinput'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['AllowNew'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['newname'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['new']);
                         break;
                     case self::INLINE_CODECOMBO:
                         $value = $validate->CodeCombo($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['table'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['field'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['class'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field]);
