@@ -104,22 +104,19 @@ class Displaygrid
                $db = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]["database"]['server'],$_SESSION["preferences"]["database"]["dbname"] ,$_SESSION["preferences"]["database"]["user"],$_SESSION["preferences"]["database"]["password"],$_SESSION["preferences"]["database"]["port"]);     
                 
                  $displaydata = new DisplayData($db);
-                foreach ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"]-1] as $key=>$value) 
-                
-                    {
+                foreach ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"]-1] as $key=>$value)                 
+                {
                     // Skip field if hidden
-                         if (in_array($key, $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["hidden"])) 
+                    if (in_array($key, $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["hidden"])) 
                     {
                         continue;
                     }
-                        echo '<td class="body">'.$displaydata->formatdata($key).'</td>';
+                     echo '<td class="body">'.$displaydata->formatdata($key).'</td>';
                     }       
-
                     echo '<td colspan=2>';
-               $displaydata->buildControlssm($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"]);
-                echo '</td></tr><tr>';
-         
-//           echo '<tr></table>';     
+                    $displaydata->buildControlssm($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"]);
+                    echo '</td>';
+//           echo '</tr></table>';     
         }    
         function foot()
         {
