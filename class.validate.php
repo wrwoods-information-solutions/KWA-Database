@@ -481,13 +481,15 @@ class validate {
 
 // End function FieldCombo_Box	
 
-    function fileComboBox($name, $directory, $css_class = "", $PleaseSelect = true, $default = "", $noinput = false, $AllowNew = false, $newname = '', $new = false) {
-        $disable = false;
-        if ($new) {
+    function fileComboBox($name, $directory, $css_class = "",$size = 10 , $PleaseSelect = true, $default = "", $noinput = false, $AllowNew = false, $newname = '', $new = false) {
+         $disable = false;
+         if ($new) 
+        {
             $show_Combo_Box = "<input type=\"text\" name=\"" . $name . "\"class=\"" . $css_class . "\" size=\"" . $size . "\" value=\"\">";
         } else {
-            $show_Combo_Box = "<select name=\"" . $name . "\"class=\"" . $css_class . "\" value=\"\">";
-            if ($noinput) {
+             $show_Combo_Box = "<select name=\"" . $name . "\"class=\"" . $css_class . "\" value=\"\">";
+            if ($noinput) 
+            {
                 $disable = " disabled ";
             }
             if (!$directory) {
@@ -496,7 +498,7 @@ class validate {
             if ($PleaseSelect) {
                 $show_Combo_Box .="<OPTION value=\"0\"> Please Select</OPTION>\n";
             }
-            foreach ($_SESSION['datagrid']['commoncombochoices'] as $key => $value) {
+            foreach ($_SESSION['displaydata']['commoncombochoices'] as $key => $value) {
                 $selection = "";
                 if ($default) {
                     if ($value == $default) {
@@ -507,17 +509,19 @@ class validate {
             }
             $choices = scandir($directory);
             foreach ($choices as $value) {
-                $selection = "";
-                if ($default) {
+                 $selection = "";
+                 if ($default) {
                     if ($value == $default) {
                         $selection = " selected ";
                     }
                 }
-                foreach ($_SESSION['datagrid']['fileextentions'] as $extention) {
-                    if (strstr($value, $extention)) {
+                foreach ($_SESSION['displaydata']['fileextentions'] as $extention) {
+                    $fileext = new SplFileInfo($extention);
+                    if ($fileext == $extention) 
+                        {
                         $show_Combo_Box .= "<OPTION value=\"" . $value . "\" " . $selection . ">" . $value . "</OPTION> \n";
-                    }
-                }
+                        }
+                  }
             }
         }
         $show_Combo_Box .= "</SELECT>\n";

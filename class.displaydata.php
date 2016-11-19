@@ -108,7 +108,7 @@ class DisplayData {
     const INLINE_TEXTBOX = 2;
     const INLINE_CHECKBOX = 3;
     const INLINE_RADIO = 4;
-    const INLINE_FILE = 5;
+    const INLINE_FILECOMBO = 5;
     const INLINE_CODECOMBO = 6;
     const INLINE_COMBOBOX = 7;
     const INLINE_DATECOMBO = 8;
@@ -949,7 +949,7 @@ class DisplayData {
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] - 1][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"]] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"];
             }
             echo '<tr class="' . (($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'] % 2) ? 'odd' : 'even') . '">'; // Switch up the bgcolors on each row
-            if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row_select"])) {
+             if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row_select"])) {
                 $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row_select"] = false;
             }
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row_select"]) {
@@ -958,7 +958,7 @@ class DisplayData {
              if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["show_{row_number"])) {
                 $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["show_row_number"] = true;
             }
-            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["show_row_number"]) {
+             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["show_row_number"]) {
                 echo '<td class="tbl-row-num">' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] . '&nbsp';
             }
             if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["show_checkboxes"])) {
@@ -1151,7 +1151,7 @@ class DisplayData {
         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["InLineEdit"]) {
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["editline"] == $line) {
                 //Save Record
-                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["controls"][1] = '<td><input class="" type="submit" name="saveline" value="Save' . $line . '"></td>';
+                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["controls"][1] = '<td><input class="" type="submit" name="[]" value="Save' . $line . '"></td>';
                 //cancel Record
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["controls"][2] = '<td><input class="" type="submit" name="cancelline" value="Cancel' . $line . '"></td>';
             } else {
@@ -1222,13 +1222,13 @@ class DisplayData {
 
     function checkcontrols() {
         if (!isset($_POST[$_SESSION['displaydata']["name"] . 'saveline']))
-            $_POST[$_SESSION['displaydata']["name"] . 'saveline'] = 0;
+            $_POST[$_SESSION['displaydata']["name"] . 'saveline'] = array(0);
         if (!isset($_POST[$_SESSION['displaydata']["name"] . 'cancelline']))
-            $_POST[$_SESSION['displaydata']["name"] . 'cancelline'] = 0;
+            $_POST[$_SESSION['displaydata']["name"] . 'cancelline'] = array(0);
         if (!isset($_POST[$_SESSION['displaydata']["name"] . 'editline']))
-            $_POST[$_SESSION['displaydata']["name"] . 'editline'] = 0;
+            $_POST[$_SESSION['displaydata']["name"] . 'editline'] = array(0);
         if (!isset($_POST[$_SESSION['displaydata']["name"] . 'deleteline']))
-            $_POST[$_SESSION['displaydata']["name"] . 'deleteline'] = 0;
+            $_POST[$_SESSION['displaydata']["name"] . 'deleteline'] = array(0);
         if (!isset($_POST[$_SESSION['displaydata']["name"] . 'chgline']))
             $_POST[$_SESSION['displaydata']["name"] . 'chgline'] = 0;
         $cancelline = $_POST[$_SESSION['displaydata']["name"] . 'cancelline'];
@@ -1240,9 +1240,9 @@ class DisplayData {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["click"] = true;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["displaygrid"] = true;
         }
-        $saveline = $_POST[$_SESSION['displaydata']["name"] . 'saveline'];
+        $saveline[0] = $_POST[$_SESSION['displaydata']["name"] . 'saveline'][0];
         if (substr($saveline[0], 0, 1) === 'S') {
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = (INT) substr($saveline[0], 1, strlen($saveline - 1));
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = (INT) substr($saveline[0], 1, strlen($saveline[0] - 1));
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] > $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["noofdblines"]) {
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertrecord"] = true;
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["updaterecord"] = false;
@@ -1261,7 +1261,7 @@ class DisplayData {
 
         $editline = $_POST[$_SESSION['displaydata']["name"] . 'editline'];
         if (substr($editline[0], 0, 1) === 'E') {
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["editline"] = (INT) substr($editline[0], 1, strlen($editline[0] - 1));
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["editline"] = (INT) substr($editline[0], 1, strlen($editline[0]) - 1);
         } else {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["editline"] = 0;
         }
@@ -1279,7 +1279,7 @@ class DisplayData {
         }
     
         $deleteline = $_POST[$_SESSION['displaydata']["name"] . 'deleteline'];
-        if (substr($deleteline[0], 0, 1) === 'D') {
+         if (substr($deleteline[0], 0, 1) === 'D') {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = 0;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertrecord"] = false;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["updaterecord"] = false;
@@ -1620,7 +1620,7 @@ class DisplayData {
             if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row"])) {
                 $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row"] = 0;
             }
-            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] == $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"]) {
+            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"]+1 == $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"]) {
                 // Apply a control type to the value
                 $validate = new validate();
                 switch ($inlinetype) {
@@ -1640,11 +1640,12 @@ class DisplayData {
                             $value = '<input type="radio" name=' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'] . ' value="' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field] . '">';
                         }
                         break;
-                    case self::INLINE_FILE:
+                    case self::INLINE_FILECOMBO:
                          $value = $validate->fileComboBox(
                                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'], 
                                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['directory'], 
                                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['css_class'], 
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['size'], 
                                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['PleaseSelect'], 
                                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field], 
                                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['noinput'], 

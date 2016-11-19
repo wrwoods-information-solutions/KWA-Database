@@ -106,7 +106,7 @@
 	$mastermenu->SetInlineFieldType('text', DisplayData::INLINE_TEXT,array('name' => 'text', 'class' => 'body', 'size' =>'20','displayvalue' => 'text')); // Text 
         $mastermenu->setcommoncombochoices(array("default"=>''));
         $mastermenu->setFileExtentions(array('.php'));
-	$mastermenu->SetInlineFieldType('link', DisplayData::INLINE_FILE, array('name' => 'link', 'directory' => '','css_class' => 'body','PleaseSelect' => false,'noinput'=>false,'AllowNew'=>false,'newname' =>'','new'=>false)); //link
+	$mastermenu->SetInlineFieldType('link', DisplayData::INLINE_FILECOMBO, array('name' => 'link', 'directory' => '','css_class' => 'body','size'=>20,'PleaseSelect' => false,'noinput'=>false,'AllowNew'=>false,'newname' =>'','new'=>false)); //link
 // Stop ordering
 	$mastermenu->hideOrder();
 	$mastermenu->setorder('orderfield');
