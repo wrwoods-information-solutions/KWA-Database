@@ -128,7 +128,7 @@ class DisplayData {
      * @param string $image_path The path to displaydata images
      */
     function __construct($_db, $image_path = '') {
-         $this->db = $_db;
+        $this->db = $_db;
         if (empty($image_path)) {
             $this->image_path = 'images/';
         } else {
@@ -462,7 +462,7 @@ class DisplayData {
         $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["noofdblines"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["noofnewlines"];
         $rowx = array();
         $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"] = array();
-        foreach ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["result"] as $rowx) {
+         foreach ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["result"] as $rowx) {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][] = $rowx;
         }
         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["page"] == 1) {
@@ -470,18 +470,18 @@ class DisplayData {
         } else {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] = (($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["page"] - 1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"] ) + 1;
         }
-        if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"]< ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"]+$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"]))
-        {    
+        if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] < ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"])) {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"]; // Last line
-        }else{
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] = ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"]-1); // Last line                
-        }    
-        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopstartrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]["firstline"]-1;
+        } else {
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] = ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"] - 1); // Last line                
+        }
+        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopstartrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]["firstline"] - 1;
 //        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopendrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"]-1;
 //        if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] > ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"])) {
 //            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"];
-             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopendrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] - 1;
+        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopendrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] - 1;
     }
+
     /**
      * Adds a standard control to a row
      *
@@ -926,21 +926,16 @@ class DisplayData {
     }
 
     function displaylines() {
-         if (!isset($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"])) {
+        if (!isset($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"])) {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = 0;
         }
-        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'] = 0; 
-        for ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] =$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['firstline']-1 ; 
-              $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] < $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['lastline']; 
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] ++) 
-        {
-             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] + 1;
-            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] == $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"]) 
-            {
+        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'] = 0;
+        for ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['firstline'] - 1; $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] < $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['lastline']; $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] ++) {
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] + 1;
+            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] == $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"]) {
                 echo '<form id="' . $_SESSION["displaydata"]["name"] . 'inlineedit" name="' . $_SESSION["displaydata"]["name"] . 'inlineedit" method="post" action="' . $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["urlparms"] . '">';
             }
-            if (($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"]-2) >= (($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["page"] - 1) * ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"]))+($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] - $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"])) 
-            {
+            if (($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] - 2) >= (($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["page"] - 1) * ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"])) + ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] - $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"])) {
                 $blankrow = array();
                 foreach ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["field"] as $blkfield) {
                     $blankrow[$blkfield] = ' ';
@@ -949,16 +944,16 @@ class DisplayData {
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] - 1][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"]] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"];
             }
             echo '<tr class="' . (($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'] % 2) ? 'odd' : 'even') . '">'; // Switch up the bgcolors on each row
-             if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row_select"])) {
+            if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row_select"])) {
                 $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row_select"] = false;
             }
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row_select"]) {
                 echo ' tbl-row-highlight" onclick="' . $this->parseVariables($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row_select"]) . '">';
             }
-             if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["show_{row_number"])) {
+            if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["show_{row_number"])) {
                 $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["show_row_number"] = true;
             }
-             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["show_row_number"]) {
+            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["show_row_number"]) {
                 echo '<td class="tbl-row-num">' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] . '&nbsp';
             }
             if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["show_checkboxes"])) {
@@ -969,17 +964,17 @@ class DisplayData {
             }
             $template = new $_SESSION["displaydata"][$_SESSION ["displaydata"] ["name"]]["template"]($this->db);
             $template->body();
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"]+1;
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] + 1;
 //            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = 0;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'] ++;
         }
-        echo '</tr></table>';
+//        echo '</tr></table>';
     }
 
     function displaylinestable() {
 //        echo '</tr><tr>';
         $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'] = 0;
-        for ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] = $_SESSION[$_SESSION ["displaydata"] ["name"]]["firstline"]-1; $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] < $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopendrow"]; $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] ++) {
+        for ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] = $_SESSION[$_SESSION ["displaydata"] ["name"]]["firstline"] - 1; $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] < $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["loopendrow"]; $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] ++) {
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] > $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] - $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"]) {
                 $blankrow = array();
                 foreach ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["field"] as $blkfield) {
@@ -1116,7 +1111,8 @@ class DisplayData {
      *
      * @param array $row The row associated array
      */
-    function buildControlssm($line) {
+    function buildControlssm($line) 
+    {
         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["InLineEdit"]) {
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] > 0) {
                 // Add controls as needed
@@ -1133,7 +1129,9 @@ class DisplayData {
                         $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["controls"][2] = '<input class="" type="submit" name="' . $_SESSION['displaydata']["name"] . 'deleteline[]" value="D' . $line . '"></span>';
                     }
                 }
-                if (count($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["controls"]) > 0) {
+                if (count($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["controls"]) > 0)
+                {
+                    echo '<form id="' . $_SESSION["displaydata"]["name"] . 'inlineedit" name="' . $_SESSION["displaydata"]["name"] . 'inlineedit" method="post" action="' . $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["urlparms"] . '">';
                     echo '<span class="tbl-controls">';
                     if (!($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] == ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] - 1))) {
                         
@@ -1141,6 +1139,7 @@ class DisplayData {
                     foreach ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["controls"] as $ctl) {
                         echo $this->parseVariables($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"], $ctl);
                     }
+                    echo '</form>';
                 }
             }
         }
@@ -1198,8 +1197,8 @@ class DisplayData {
     function checkajax() {
         if (!$this->isAjaxUsed()) {
             // Print out required javascript functions
-            $this->printJavascript();
-            echo '<script type="text/javascript">function updateTable() { window.location = "?" + params; }</script>';
+             $this->printJavascript();
+             echo '<script type="text/javascript">function updateTable() { window.location = "?" + params; }</script>';
         }
     }
 
@@ -1255,6 +1254,7 @@ class DisplayData {
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertline"] = 0;
             }
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleteid"] = 0;
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["id"] = (INT) $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]['row'][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] - 1][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"]];
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["click"] = true;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["displaygrid"] = true;
         }
@@ -1271,15 +1271,16 @@ class DisplayData {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["updaterecord"] = false;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleterecord"] = false;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertline"] = 0;
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleteid"] = 0;          
-             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["click"] = true;
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleteid"] = 0;
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["click"] = true;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["displaygrid"] = true;
 //            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["editline"] = 0;
 //            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["noofnewlines"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["noofnewlines"] - 1;
         }
-    
+
         $deleteline = $_POST[$_SESSION['displaydata']["name"] . 'deleteline'];
-         if (substr($deleteline[0], 0, 1) === 'D') {
+        if (substr($deleteline[0], 0, 1) === 'D') {
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleteline"] = (INT) substr($deleteline[0], 1, strlen($deleteline[0]) - 1);
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"] = 0;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertrecord"] = false;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["updaterecord"] = false;
@@ -1287,7 +1288,7 @@ class DisplayData {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["writeline"] = 0;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertline"] = 0;
 //            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["editline"] = 0;
-             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleteid"] = (INT) $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["id"];
+            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["id"] = (INT) $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]['row'][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleteline"] - 1][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"]];
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["click"] = true;
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["displaygrid"] = true;
         }
@@ -1467,10 +1468,15 @@ class DisplayData {
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["result"] = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["result"]->fetchAll(PDO::FETCH_ASSOC);
 
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row_count"] = count($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["result"]);
-            $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["id"] = (INT) $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["result"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"]];
-            //               }
+           if (isset($_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]['row']))
+           {
+                if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row_count"] > 0)
+                {   
+                    $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["id"] = (INT) $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]['row'][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"]];
+                }
+           }     
         }
-    }
+    }    
 
     function dbinsert() {
         $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["insertrecord"] = false;
@@ -1525,65 +1531,56 @@ class DisplayData {
     }
 
     function dbdelete() {
-        $sql = 'DELETE FROM ' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["table"] . ' WHERE ' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"] . '= ' .$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleteid"];
+        $sql = 'DELETE FROM ' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["table"] . ' WHERE ' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pid"] . '= ' . $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["id"];
         $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["result"] = $this->db->query($sql);
+        $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["deleterecord"] = false;
     }
 
-    function setpagelimit() 
-    {
-        if (!isset($_POST[$_SESSION["displaydata"]["name"].'dirfirst']))
-        {        
-                $_POST[$_SESSION["displaydata"]["name"] . 'dirfirst'] = '';
-        }        
-        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirfirst'] == 'First')
-        {
+    function setpagelimit() {
+        if (!isset($_POST[$_SESSION["displaydata"]["name"] . 'dirfirst'])) {
+            $_POST[$_SESSION["displaydata"]["name"] . 'dirfirst'] = '';
+        }
+        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirfirst'] == 'First') {
             $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] = 1;
-        }        
-        if (!isset($_POST[$_SESSION["displaydata"]["name"].'dirprevious']))
-        {        
-                $_POST[$_SESSION["displaydata"]["name"] . 'dirprevious'] = '';
-        }        
-        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirprevious'] == 'Previous')
-        {
-            $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"]--;
-        }        
-        if (!isset($_POST[$_SESSION["displaydata"]["name"].'dirnext']))
-        {        
-                $_POST[$_SESSION["displaydata"]["name"] . 'dirnext'] = '';
-        }        
-        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirnext'] == 'Next')
-        {
-            $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"]++;           
-        }        
-        if (!isset($_POST[$_SESSION["displaydata"]["name"].'dirlast']))
-        {        
-                 $_POST[$_SESSION["displaydata"]["name"] . 'dirlast'] = '';
-        }        
-        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirlast'] == 'Last')
-        {
-            $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] = (int)$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"]/$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
-        }        
+        }
+        if (!isset($_POST[$_SESSION["displaydata"]["name"] . 'dirprevious'])) {
+            $_POST[$_SESSION["displaydata"]["name"] . 'dirprevious'] = '';
+        }
+        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirprevious'] == 'Previous') {
+            $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] --;
+        }
+        if (!isset($_POST[$_SESSION["displaydata"]["name"] . 'dirnext'])) {
+            $_POST[$_SESSION["displaydata"]["name"] . 'dirnext'] = '';
+        }
+        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirnext'] == 'Next') {
+            $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] ++;
+        }
+        if (!isset($_POST[$_SESSION["displaydata"]["name"] . 'dirlast'])) {
+            $_POST[$_SESSION["displaydata"]["name"] . 'dirlast'] = '';
+        }
+        if ($_POST[$_SESSION["displaydata"]["name"] . 'dirlast'] == 'Last') {
+            $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] = (int) $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"] / $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
+        }
 //                      Set the page limit
-       if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"])) {
+        if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"])) {
             $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] = 1;
         }
         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["page"] == 1) {
             $low = 0;
             $high = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
-        } elseif (($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"]-1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"]>$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"])
-                 {
-                    $low = ($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"]-1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
-                    $high = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"];
-                 }else{
-                        $low = ($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"]-1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
-                        $high = ($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"]-1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];               
-           }   
-            $this->setLimit($low, $high); 
+        } elseif (($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] - 1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"] > $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"]) {
+            $low = ($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] - 1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
+            $high = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["TotalLines"];
+        } else {
+            $low = ($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] - 1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
+            $high = ($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["page"] - 1) * $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"] + $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["results_per_page"];
+        }
+        $this->setLimit($low, $high);
     }
 
     function formopen() {
         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["InLineEdit"]) {
-//            echo '<form id="' . $_SESSION["displaydata"]["name"] . 'inlineedit" name="' . $_SESSION["displaydata"]["name"] . 'inlineedit" method="post" action="' . $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["urlparms"] . '">';
+            echo '<form id="' . $_SESSION["displaydata"]["name"] . 'inlineedit" name="' . $_SESSION["displaydata"]["name"] . 'inlineedit" method="post" action="' . $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["urlparms"] . '">';
         }
     }
 
@@ -1595,13 +1592,13 @@ class DisplayData {
 
     function formopenfoot() {
         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["InLineEdit"]) {
-//            echo '<form id="inlinedir' . $_SESSION ["displaydata"] ["name"] . '" name="inlinedir' . $_SESSION ["displaydata"] ["name"] . '" method="post" action="' . $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["urlparms"] . '">';
+            echo '<form id="inlinedir' . $_SESSION ["displaydata"] ["name"] . '" name="inlinedir' . $_SESSION ["displaydata"] ["name"] . '" method="post" action="' . $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["urlparms"] . '">';
         }
     }
 
     function formclose() {
         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["InLineEdit"]) {
-//            echo '</form>';
+            echo '</form>';
         }
     }
 
@@ -1620,7 +1617,7 @@ class DisplayData {
             if (!isset($_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row"])) {
                 $_SESSION['displaydata'][$_SESSION["displaydata"]["name"]]["row"] = 0;
             }
-            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"]+1 == $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"]) {
+            if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["currrow"] + 1 == $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["chgline"]) {
                 // Apply a control type to the value
                 $validate = new validate();
                 switch ($inlinetype) {
@@ -1641,17 +1638,8 @@ class DisplayData {
                         }
                         break;
                     case self::INLINE_FILECOMBO:
-                         $value = $validate->fileComboBox(
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['directory'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['css_class'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['size'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['PleaseSelect'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['noinput'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['AllowNew'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['newname'], 
-                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['new']);
+                        $value = $validate->fileComboBox(
+                                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['directory'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['css_class'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['size'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['PleaseSelect'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['noinput'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['AllowNew'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['newname'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['new']);
                         break;
                     case self::INLINE_CODECOMBO:
                         $value = $validate->CodeCombo($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['name'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['table'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['field'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["inlinetype"][$field]['class'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field]);
@@ -1755,7 +1743,7 @@ class DisplayData {
                             $value = $validate->FieldDisplay($table, $displayfield, $inputfield, $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field]);
                             break;
                         case self::TYPE_SQLCODEDISPLAY:
-                            $value = $validate->SQLCodeDisplay($sql,$field, $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$code]);
+                            $value = $validate->SQLCodeDisplay($sql, $field, $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$code]);
                             break;
                         case self::TYPE_DATE:
                             $value = $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["row"][$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["line"] - 1][$field];
@@ -1917,7 +1905,7 @@ class DisplayData {
         $template->head();
         $this->setrowsandlines();
         $this->displaylines();
-        $template->foot();
+        $this->footer();
     }
 
     function printTable() {
@@ -1938,4 +1926,10 @@ class DisplayData {
         $this->buildFooter($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]['i'], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["firstline"], $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["lastline"]);
         $this->tableclose();
     }
+
+    function footer() {
+        $template = new $_SESSION["displaydata"][$_SESSION ["displaydata"] ["name"]]["template"]($this->db);
+        $template->foot();
+    }
+
 }

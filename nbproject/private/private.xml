@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
             <url>class.validate.php</url>
             <bookmark id="1">
@@ -9,23 +9,54 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>setuplogin.php</url>
+            <bookmark id="2">
+                <name/>
+                <line>217</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displaysession.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displayaddress.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.codes.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.log.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displayrelationship.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/setupcodes.php</file>
-            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/setupmastermenu.php</file>
-            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/testsetuplogin.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/inputrequest.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/keycode.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.displaydata.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.validate.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/index.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.pdodatabase.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/setuplogin.php</file>
-            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.menu.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/inputperson.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/prefCSS.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/prtpersonprofile.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.preferences.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.login.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displaysession.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/testperson.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displaynotes.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/setupmastermenu.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.digitalclock.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/inputprogram.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/setupmessages.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/freshdesk.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displaystatus.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/inputorganization.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.menu.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.messages.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/testinputperson1.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/backuprestore.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/prefDB.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displaygrid.php</file>
             <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/displayserver.php</file>
-            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.login.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/class.person.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/home.php</file>
+            <file>file:/I:/WRWIS/Projects/KWA%20Database/KWA%20Database/prefCalendar.php</file>
         </group>
     </open-files>
 </project-private>

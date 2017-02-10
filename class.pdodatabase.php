@@ -639,6 +639,126 @@ class DBMS{
 
 		return $result[$field];
 	}
-
+	//backup database
+	function backupdb($name,$tables = '*')
+	{
+		$this->connect($_SESSION["preferences"]["database"]["server"], $_SESSION["preferences"]["database"]["user"], $_SESSION["preferences"]["database"]["password"], $name);
+		
+		if($tables == '*')
+		{
+			$tables = array();
+			$result = $this->query('SHOW TABLES');
+			while($row = $this->fetchrow($result))
+			{
+				$tables[] = $row[0];
+			}
+		}
+		else
+		{
+			$tables = is_array($tables) ? $tables : explode(',',$tables);
+		}
+	
+		foreach($tables as $table)
+		{
+			$result = $this->query('SELECT * FROM '.$table);
+			$num_fields = $this->numfield($result);
+			$return.= 'DROP TABLE IF EXISTS '.$table.';';
+			$row2 = $this->fetchrow($this->query('SHOW CREATE TABLE '.$table));
+			$return.= "\n\n".$row2[1].";\n\n";
+			for ($i = 0; $i < $num_fields; $i++) 
+			{
+				while($row = $this->fetchrow($result))
+				{
+					$return.= 'INSERT INTO '.$table.' VALUES(';
+					for($j=0; $j<$num_fields; $j++) 
+					{
+						$row[$j] = addslashes($row[$j]);
+						$row[$j] = str_replace("'", '', $row[$j]);
+						$row[$j] = str_replace("\n", '', $row[$j]);
+						$row[$j] = str_replace("\r", '', $row[$j]);
+						$row[$j] = str_replace('\"', '"', $row[$j]);
+						$row[$j] = str_replace("�", "\'", $row[$j]);
+						$row[$j] = str_replace("`", "\'", $row[$j]);
+						$row[$j] = str_replace('�', '"', $row[$j]);
+						$row[$j] = str_replace('�', '"', $row[$j]);
+						if (isset($row[$j])) { $return.= "'".$row[$j]."'"; } else { $return.= "''"; }
+						if ($j<($num_fields-1)) { $return.= ', '; }
+					}
+					$return.= ");\n";
+				}
+			}
+			$return.="\n\n\n";
+		}
+	
+		$fileName = 'db-backup-'.$name.'-'.time().'-'.(md5(implode(',',$tables))).'.sql'; 
+	
+		$handle = fopen($fileName,'w+');
+		fwrite($handle,$return);
+		fclose($handle);
+	
+		if (file_exists($fileName))
+		{
+			include "class.pclzip.php";
+			@set_time_limit(0);
+			$zipName = $this->getRealFileName(str_replace('.sql', '', $fileName));
+		
+			$outputArchive = 'backup/'.$zipName.'.zip'; 
+			$archive       = new PclZip($outputArchive); //nama target zip
+		
+			if($archive->create($fileName) == 0) //source sql
+			{
+   				echo ("Error : ".$archive->errorInfo(true));
+			}
+			$this->remove($fileName);
+			$resultLink = "<a href='$outputArchive' target='_blank'>Klik here to DOWNLOAD DATABASE</a> or <a href='".$_SERVER['PHP_SELF']."?cTask=backUpDB&cTask2=removeBckDB&file=$outputArchive'>remove backup database</a>.";
+    	}
+		echo $resultLink;
+	}
+	function restoredb($sourceDB)
+	{
+		if(file_exists($sourceDB))
+		{
+			@set_time_limit(0);
+			$f = fopen($sourceDB,"r+");
+			$sqlFile = fread($f, filesize($sourceDB));
+			$sqlFile = str_replace("\r","%BR%",$sqlFile);
+			$sqlFile = str_replace("\n","%BR%",$sqlFile);
+			$sqlFile = str_replace("%BR%%BR%","%BR%",$sqlFile);
+			$sqlArray = explode('%BR%', $sqlFile);
+			$sqlArrayToExecute;
+			foreach ($sqlArray as $stmt) 
+			{
+				$stmt = $this->isComment($stmt);
+				if ($stmt != '')
+					$sqlArrayToExecute[] = $stmt;
+			}
+			$sqlFile = implode("%BR%",$sqlArrayToExecute);
+			unset($sqlArrayToExecute);
+			$sqlArray = explode(';%BR%', $sqlFile);
+			unset($sqlFile);
+			foreach ($sqlArray as $stmt)
+			{
+				$stmt = str_replace("%BR%"," ",$stmt);
+				$stmt = str_replace("&nbsp;&nbsp;", "&nbsp;", $stmt);
+				$stmt = str_replace("�", "\'", $stmt);
+				$stmt = str_replace("</p><p>", "</p> <p>", $stmt);
+				$stmt = str_replace("<p><br />", "<p>", $stmt);
+				$stmt = trim($stmt);
+				$result = $this->query($stmt);
+				$_SESSION['ttlQuery'] = count($sqlArray);
+				$_SESSION['timeQuery']     = time();
+				if (!$result)
+				{
+					return false;
+				}
+			}
+			echo 'Import has been successfully finished, '.$_SESSION['ttlQuery'].' queries executed on '.date('Y-m-d H:i:s', $_SESSION['timeQuery']);
+			$this->remove($sourceDB);
+		}
+		else
+		{
+			echo 'SQL File not found';
+		}
+	}
 }
 ?>

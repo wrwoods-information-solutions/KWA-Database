@@ -94,7 +94,7 @@
 	$codesgrid->showRowNumber();
 
 // Change the amount of results per page
-	$codesgrid->setResultsPerPage(14);
+	$codesgrid->setResultsPerPage(5);
 
 // Change headers text
 	$codesgrid->SetFieldHeader('seqno', 'Seq #');
@@ -147,15 +147,13 @@
                 <input type="submit" name="refreshfield" value="Refresh" />
             </td>
 	</tr>
-	<tr>
-		<td>
-			<?php
- 				if ($_SESSION["displaydata"]["displaygrid"])
-				{
-// Print the data
-					$codesgrid->printdata();
-				}
-			?>		</td>
-	</table>
-    </form>
+        </table>    
+    </form>    
+  <?php
+ 	if ($_SESSION["displaydata"]["displaygrid"])
+        {                            
+  // Print the data
+             $codesgrid->printdata();
+        }
+  ?>		
 </BODY>

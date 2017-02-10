@@ -18,16 +18,16 @@
         $msg = new messages;
        if (!isset($_POST['refreshcategory']))
             $_POST['refreshcategory'] = '';
-        if (!isset($_SESSION["datagrid"]['messages']["click"]))
-            $_SESSION["datagrid"]['messages']["click"] = false;
-        if (!isset($_SESSION["datagrid"]['messages']["category"]))
-            $_SESSION["datagrid"]['messages']["category"] = '';
-        if (!isset($_SESSION["datagrid"]['messages']["newcategory"]))
-            $_SESSION["datagrid"]['messages']["newcategory"] = false;
-        if (!isset($_SESSION["datagrid"]['messages']["categorynew"]))
-            $_SESSION["datagrid"]['messages']["categorynew"] = false;
-         if (!isset($_SESSION["datagrid"]['messages']["DisplayData"]))
-            $_SESSION["datagrid"]['messages']["DisplayData"] = false;
+        if (!isset($_SESSION["displaydata"]['messages']["click"]))
+            $_SESSION["displaydata"]['messages']["click"] = false;
+        if (!isset($_SESSION["displaydata"]['messages']["category"]))
+            $_SESSION["displaydata"]['messages']["category"] = '';
+        if (!isset($_SESSION["displaydata"]['messages']["newcategory"]))
+            $_SESSION["displaydata"]['messages']["newcategory"] = false;
+        if (!isset($_SESSION["displaydata"]['messages']["categorynew"]))
+            $_SESSION["displaydata"]['messages']["categorynew"] = false;
+         if (!isset($_SESSION["displaydata"]['messages']["DisplayData"]))
+            $_SESSION["displaydata"]['messages']["DisplayData"] = false;
          if ($_POST['refreshcategory'] == 'Refresh')
          {
             if ($_POST['selectcategory'] == '0')
@@ -36,44 +36,44 @@
             }
             if ($_POST['selectcategory'] == -99)
             {
-                    $_SESSION["datagrid"]['messages']["DisplayData"] = false;
-                     $_SESSION["datagrid"]['messages']["categorynew"] = true;
-                    $_SESSION["datagrid"]['messages']["click"] = false;
+                    $_SESSION["displaydata"]['messages']["DisplayData"] = false;
+                     $_SESSION["displaydata"]['messages']["categorynew"] = true;
+                    $_SESSION["displaydata"]['messages']["click"] = false;
             }
             else
             {
-                    $_SESSION["datagrid"]['messages']["categorynew"] = false;
-                    $_SESSION["datagrid"]['messages']["DisplayData"] = true;
-                    $_SESSION["datagrid"]['messages']["click"] = true;
-                    $_SESSION["datagrid"]['messages']["category"] = $_POST['selectcategory'];
+                    $_SESSION["displaydata"]['messages']["categorynew"] = false;
+                    $_SESSION["displaydata"]['messages']["DisplayData"] = true;
+                    $_SESSION["displaydata"]['messages']["click"] = true;
+                    $_SESSION["displaydata"]['messages']["category"] = $_POST['selectcategory'];
             }
-            if ($_SESSION["datagrid"]['messages']["newcategory"] )
+            if ($_SESSION["displaydata"]['messages']["newcategory"] )
             {
-                $_SESSION["datagrid"]['messages']["newcategory"] = false;
-                $_SESSION["datagrid"]['messages']["category"] = $_POST['selectcategory'];
+                $_SESSION["displaydata"]['messages']["newcategory"] = false;
+                $_SESSION["displaydata"]['messages']["category"] = $_POST['selectcategory'];
                 $messages = new messages;
-                $messages->insertrecord($_SESSION["datagrid"]['messages']["category"]);
+                $messages->insertrecord($_SESSION["displaydata"]['messages']["category"]);
                 $_POST[$_SESSION['displaydata']["name"].'editline']= 'E1';     
            }        
-           if ($_SESSION["datagrid"]['messages']["categorynew"] )
+           if ($_SESSION["displaydata"]['messages']["categorynew"] )
            {
-                $_SESSION["datagrid"]['messages']["newcategory"] = true;
+                $_SESSION["displaydata"]['messages']["newcategory"] = true;
            }        
         }
-        if ($_SESSION["datagrid"]['messages']["click"])
+        if ($_SESSION["displaydata"]['messages']["click"])
         {
-                $_SESSION["datagrid"]['messages']["DisplayData"] = true;
+                $_SESSION["displaydata"]['messages']["DisplayData"] = true;
         }	
 // Load the database adapter
 	$db = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]["database"]['server'],$_SESSION["preferences"]["database"]["dbname"] ,$_SESSION["preferences"]["database"]["user"],$_SESSION["preferences"]["database"]["password"],$_SESSION["preferences"]["database"]["port"]);
 
-// Load the datagrid class
+// Load the displaydata class
 	$messages = new DisplayData($db);
 	$messages->setDisplayData('messages');
         $messages->SetTemplate('displaygrid',$db);
 // Set the query, select all rows from the people table
-	$messages->setQuery("messageid,category,code,title,description", "messages","messageid","category = '".$_SESSION["datagrid"][$_SESSION ["displaydata"] ["name"]]['category'].'\'');
-	$messages->setConstantFields(array("category"=>"'".$_SESSION["datagrid"][$_SESSION ["displaydata"] ["name"]]["category"]."'"));
+	$messages->setQuery("messageid,category,code,title,description", "messages","messageid","category = '".$_SESSION["displaydata"][$_SESSION ["displaydata"] ["name"]]['category'].'\'');
+	$messages->setConstantFields(array("category"=>"'".$_SESSION["displaydata"][$_SESSION ["displaydata"] ["name"]]["category"]."'"));
 	$messages->SetPrimaryID('messageid') ;
 	$messages->setOrder('code');
         $messages->setURLConstant("setupmessages.php");
@@ -116,7 +116,7 @@
 // Stop ordering
 	$messages->hideOrder(false);
         if(isset($_GET["page"]))
-            $_SESSION['datagrid']["page"] = (int)$_GET["page"];
+            $_SESSION['displaydata']["page"] = (int)$_GET["page"];
 	?>
 </HEAD>
 <BODY>
@@ -139,7 +139,7 @@
 		<td width="89%">
                         <?php
                             $validate = new validate;
-                            echo $validate->ComboBox("selectcategory","messages",'',"category","ASC","category","category","body",true,array('New Category' => '-99'),$_SESSION["datagrid"]['messages']["category"],false,false,"addcategory",$_SESSION["datagrid"]['messages']["categorynew"],"20",$_SESSION["preferences"]["database"]["dbname"]);
+                            echo $validate->ComboBox("selectcategory","messages",'',"category","ASC","category","category","body",true,array('New Category' => '-99'),$_SESSION["displaydata"]['messages']["category"],false,false,"addcategory",$_SESSION["displaydata"]['messages']["categorynew"],"20",$_SESSION["preferences"]["database"]["dbname"]);
                         ?>
 			<input type="submit" name="refreshcategory" value="Refresh" />
                 </td>            
@@ -147,7 +147,7 @@
 	<tr>
 		<td colspan="2">
 			<?php
-				if ($_SESSION["datagrid"]["messages"]["DisplayData"])
+				if ($_SESSION["displaydata"]["messages"]["DisplayData"])
 				{
 // Print the table
 					$messages->printdata();

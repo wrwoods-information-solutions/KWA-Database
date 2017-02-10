@@ -201,7 +201,7 @@ div.sample_popup input.btn
 }
 body { font: 0.8em Garamomnd; }
 
-/* Datagrid Table */
+/* displaydata Table */
 table.tbl {border: 0;  background: url(Images/HeavenBackground.jpg);font-size: 0.9em; clear: both; }
 table.brd {border: 2px solid #000000;  background: url(Images/HeavenBackground.jpg); font-size: 0.9em; clear: both; }
 td.tbl-header { background: url(Images/HeavenBackground.jpg); text-align: center; padding: 3px; font-weight: bold; border-bottom: 2px solid #000000; }

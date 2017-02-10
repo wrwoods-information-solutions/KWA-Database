@@ -23,7 +23,7 @@ function show()
         require_once "class.displaydata.php";
         require_once "class.person.php";
         if (isset($_GET["page"]))
-            $_SESSION['datagrid'][$_SESSION ["datagrid"] ["name"]]["page"] = (int) $_GET["page"];
+            $_SESSION['displaydata']["usermenugrid"]["page"] = (int) $_GET["page"];
         if (isset($_GET["ctrtype"]))
         {    
             $ctrtype= $_GET["ctrtype"];
@@ -36,8 +36,8 @@ function show()
         $login->checklogin();
         $person = new person;
         $login->checklogout();
-        if (!isset($_SESSION["datagrid"]["loginkey"]))
-            $_SESSION["datagrid"]["loginkey"] = 0;
+        if (!isset($_SESSION["displaydata"]["loginkey"]))
+            $_SESSION["displaydata"]["loginkey"] = 0;
         if (!isset($_POST['refreshlogin']))
             $_POST['refreshlogin'] = '';
         if (!isset($_POST['selectlogin']))
@@ -50,10 +50,10 @@ function show()
             $_POST['savestdmenu'] = '';
         if (!isset($_POST['seletestdmenu']))
             $_POST['deletestdmenu'] = '';
-        if (!isset($_SESSION["datagrid"]["click"]))
-            $_SESSION["datagrid"]["click"] = false;
-        if (!isset($_SESSION["datagrid"]["displaygrid"]))
-            $_SESSION["datagrid"]["displaygrid"] = false;
+        if (!isset($_SESSION["displaydata"]["click"]))
+            $_SESSION["displaydata"]["click"] = false;
+        if (!isset($_SESSION["displaydata"]["displaygrid"]))
+            $_SESSION["displaydata"]["displaygrid"] = false;
         if (!isset($_POST['password']))
             $_POST['password'] = '';
         if (!isset($_POST['confpassword']))
@@ -68,8 +68,8 @@ function show()
             $_POST['delete'] = '';
         if (!isset($_POST['reset']))
             $_POST['reset'] = '';
-        if (!isset($_SESSION["datagrid"]["menuname"]))
-            $_SESSION["datagrid"]["menuname"] = '';
+        if (!isset($_SESSION["displaydata"]["menuname"]))
+            $_SESSION["displaydata"]["menuname"] = '';
         if (!isset($loginkey))
             $loginkey = '';
         if (!isset($personid))
@@ -96,32 +96,32 @@ function show()
             $_SESSION["tbllogin"]['usermenuname'] = '';
         if ($_POST['refreshlogin'] == 'Refresh') {
             if ($_POST['selectlogin'] == -99) {
-                $_SESSION["datagrid"]["displaygrid"] = false;
-                $_SESSION["datagrid"]["click"] = true;
+                $_SESSION["displaydata"]["displaygrid"] = false;
+                $_SESSION["displaydata"]["click"] = true;
             }
             if ($_POST['newmenu'] == -99) {
-                $_SESSION["datagrid"]["menunew"] = true;
-                $_SESSION["datagrid"]["click"] = true;
-                $_SESSION["datagrid"]["displaygrid"] = false;
-                $_SESSION["datagrid"]["click"] = true;
+                $_SESSION["displaydata"]["menunew"] = true;
+                $_SESSION["displaydata"]["click"] = true;
+                $_SESSION["displaydata"]["displaygrid"] = false;
+                $_SESSION["displaydata"]["click"] = true;
             }
             if ($_POST['selectlogin'] == 0) {
-                $_SESSION["datagrid"]["displaygrid"] = false;
-                $_SESSION["datagrid"]["click"] = false;
+                $_SESSION["displaydata"]["displaygrid"] = false;
+                $_SESSION["displaydata"]["click"] = false;
             } else {
-                $_SESSION["datagrid"]["loginkey"] = $_POST['selectlogin'];
-                $_SESSION["datagrid"]["click"] = true;
+                $_SESSION["displaydata"]["loginkey"] = $_POST['selectlogin'];
+                $_SESSION["displaydata"]["click"] = true;
             }
         }
         if ($_POST['refreshmenu'] == 'Refresh') {
-            $_SESSION["datagrid"]["menuname"] = $_POST['selectusermenuname'];
-            $_SESSION["datagrid"]["displaygrid"] = true;
-            $_SESSION["datagrid"]["click"] = true;
+            $_SESSION["displaydata"]["menuname"] = $_POST['selectusermenuname'];
+            $_SESSION["displaydata"]["displaygrid"] = true;
+            $_SESSION["displaydata"]["click"] = true;
         }
-        if ($_SESSION["datagrid"]["click"]) {
+        if ($_SESSION["displaydata"]["click"]) {
             if ($_POST['selectlogin'] == -99) {
-                $_SESSION["datagrid"]["loginkey"] = $login->insertrecord();
-                $loginkey = $_SESSION["datagrid"]["loginkey"];
+                $_SESSION["displaydata"]["loginkey"] = $login->insertrecord();
+                $loginkey = $_SESSION["displaydata"]["loginkey"];
 //      		blank form varables
                 $personid = 0;
                 $personfullname = ' ';
@@ -130,9 +130,9 @@ function show()
                 $confpassword = ' ';
                 $usermenuname = 0;
             } else {
-                $_SESSION["tbllogin"] = $login->getrecord($_SESSION["datagrid"]["loginkey"]);
+                $_SESSION["tbllogin"] = $login->getrecord($_SESSION["displaydata"]["loginkey"]);
 // 	    		load form varables
-                $loginkey = $_SESSION["datagrid"]["loginkey"];
+                $loginkey = $_SESSION["displaydata"]["loginkey"];
                 $personid = $_SESSION["tbllogin"]['personid'];
                 $username = $_SESSION["tbllogin"]['username'];
                 $password = "";
@@ -144,27 +144,27 @@ function show()
         }
         if ($_POST['usestdmenu'] == 'Use Standard Menu') {
             $login = new login;
-            $login->usestdmenu($_SESSION["datagrid"]["loginkey"], $_POST['usestdmenuinput']);
-            $_SESSION["datagrid"]["displaygrid"] = false;
-            $_SESSION["datagrid"]["click"] = true;
+            $login->usestdmenu($_SESSION["displaydata"]["loginkey"], $_POST['usestdmenuinput']);
+            $_SESSION["displaydata"]["displaygrid"] = false;
+            $_SESSION["displaydata"]["click"] = true;
         }
         if ($_POST['submit'] == 'Submit') {
-            $_SESSION["datagrid"]["loginkey"] = $_POST['selectlogin'];
-            $login->updaterecord($_SESSION["datagrid"]["loginkey"], $_POST['selectpersonid'], $_POST['username'], $_POST['password'], $_POST['selectusermenuname']);
+            $_SESSION["displaydata"]["loginkey"] = $_POST['selectlogin'];
+            $login->updaterecord($_SESSION["displaydata"]["loginkey"], $_POST['selectpersonid'], $_POST['username'], $_POST['password'], $_POST['selectusermenuname']);
             $_POST = array();
-            $_SESSION["datagrid"]["loginkey"] = -99;
+            $_SESSION["displaydata"]["loginkey"] = -99;
             $login = new login;
             $login->cleanSESSION();
         }
         if ($_POST['delete'] == 'Delete') {
             $login->deleterecord($_POST['selectlogin']);
-            $_SESSION["datagrid"]["loginkey"] = -99;
+            $_SESSION["displaydata"]["loginkey"] = -99;
             $login = new login;
             $login->cleanSESSION();
         }
         if ($_POST['reset'] == 'Reset') {
             $_POST = array();
-            $_SESSION["datagrid"]["loginkey"] = -99;
+            $_SESSION["displaydata"]["loginkey"] = -99;
             $login = new login;
             $login->cleanSESSION();
         }
@@ -179,15 +179,15 @@ function show()
         if ($_POST['savestdmenu'] == 'Save Standard Menu')
         {
             $login = new login;
-            $login->savestdmenu($_SESSION['savestdusermenuname'], $_SESSION["datagrid"]["menuname"]);
-            $_SESSION["datagrid"]["displaygrid"] = true;
-            $_SESSION["datagrid"]["click"] = true;
+            $login->savestdmenu($_SESSION['savestdusermenuname'], $_SESSION["displaydata"]["menuname"]);
+            $_SESSION["displaydata"]["displaygrid"] = true;
+            $_SESSION["displaydata"]["click"] = true;
         }
         if ($_POST['deletestdmenu'] == '="Delete Standard Menu') {
             $login = new login;
             $login->deletestdmenu($_POST['deletestdmenu']);
-            $_SESSION["datagrid"]["displaygrid"] = false;
-            $_SESSION["datagrid"]["click"] = true;
+            $_SESSION["displaydata"]["displaygrid"] = false;
+            $_SESSION["displaydata"]["click"] = true;
         }
         if ($_POST['submitpassword'] == 'Submit Password')
         {
@@ -201,14 +201,14 @@ function show()
 // Load the database adapter
         $db = new DBMS($_SESSION["preferences"]["database"]["type"], $_SESSION["preferences"]["database"]['server'], $_SESSION["preferences"]["database"]["dbname"], $_SESSION["preferences"]["database"]["user"], $_SESSION["preferences"]["database"]["password"], $_SESSION["preferences"]["database"]["dbname"]);
 
-// Load the datagrid class
+// Load the displaydata class
         $usermenu = new DisplayData($db);
         $usermenu->setdisplaydata('usermenugrid');
         $usermenu->SetTemplate('displaygrid', $db);
-//		$usermenu->setUserName($_SESSION["datagrid"]['username']); 
+//		$usermenu->setUserName($_SESSION["displaydata"]['username']); 
 // Set the query, select all rows from the people table
-        $usermenu->setQuery("usermenuid,menuname,orderfield,mastermenuid,text", "usermenu", "", "menuname = '" . $_SESSION["datagrid"]['menuname'] . '\'');
-        $usermenu->setConstantFields(array("userid" => $_SESSION["datagrid"]["loginkey"], "menuname" => '"'. $_SESSION["datagrid"]['menuname'].'"'));
+        $usermenu->setQuery("usermenuid,menuname,orderfield,mastermenuid,title", "usermenu", "", "menuname = '" . $_SESSION["displaydata"]['menuname'] . '\'');
+        $usermenu->setConstantFields(array("userid" => $_SESSION["displaydata"]["loginkey"], "menuname" => '"'. $_SESSION["displaydata"]['menuname'].'"'));
         $usermenu->SetPrimaryID('usermenuid');
         $usermenu->setURLConstant("setuplogin.php");
 // Hide ID field
@@ -222,8 +222,8 @@ function show()
 // Add standard control
         $usermenu->addStandardControl(DisplayData::STDCTRL_INLINEEDIT, "setuplogin.php", DisplayData::TYPE_PHPFUNCTION);
 // Add create control
-//		$_SESSION["datagrid"]['currnoofnewlines'] = $_SESSION["datagrid"]["noofnewlines"] +1;
-//		$_SESSION["datagrid"]['userid'] = $_SESSION["datagrid"]['loginid'];
+//		$_SESSION["displaydata"]['currnoofnewlines'] = $_SESSION["displaydata"]["noofnewlines"] +1;
+//		$_SESSION["displaydata"]['userid'] = $_SESSION["displaydata"]['loginid'];
         $usermenu->showCreateButton("setuplogin.php", DisplayData::TYPE_INLINEADDRECORD, 'Add New Menu Item');
 
 // Show checkboxes
@@ -238,16 +238,16 @@ function show()
 // Change headers text
         $usermenu->SetFieldHeader('orderfield', 'Order');
         $usermenu->SetFieldHeader('mastermenuid', 'Master Menu');
-        $usermenu->SetFieldHeader('text', 'Text');
+        $usermenu->SetFieldHeader('title', 'Title');
 //  set field type
         $usermenu->SetFieldType('orderfield', DisplayData::TYPE_FIELD, array('table'=>'usermenu','displayfield'=> 'orderfield', 'inputfield'=>'orderfield'));
         $usermenu->SetFieldType('mastermenuid', DisplayData::TYPE_FIELD, array('table'=>'mastermenu','displayfield'=> 'text', 'inputfield'=>'mastermenuid'));
-        $usermenu->SetFieldType('text', DisplayData::TYPE_FIELD, array('table'=>'usermenu','displayfield'=> 'text', 'inputfield'=>'text'));
+        $usermenu->SetFieldType('title', DisplayData::TYPE_FIELD, array('table'=>'usermenu','displayfield'=> 'title', 'inputfield'=>'title'));
 
 //  set inlineedit field type
         $usermenu->SetInlineFieldType('orderfield', DisplayData::INLINE_TEXT, array('name' => 'orderfield', 'class' => 'body', 'size' => '5', 'displayvalue' => 'orderfield')); // orderfield
-        $usermenu->SetInlineFieldType('mastermenuid', DisplayData::INLINE_COMBOBOX, array('name' => 'mastermenuid', 'table' => 'mastermenu', 'where' => '', 'order_by' => 'title', 'asc' => 'ASC', 'value' => 'mastermenuid', 'display' => 'text', 'class' => 'body', 'pleaseselect' => true, 'commonelements' => array('Default' => 0), 'default' => '', 'noinput' => '', 'AllowNew' => false, 'newname' => '', 'new' => false, 'size' => 20)); // MasterMenu id
-        $usermenu->SetInlineFieldType('text', DisplayData::INLINE_TEXT, array('name' => 'text', 'class' => '', 'size' => '20', 'displayvalue' => 'text')); // Text 
+        $usermenu->SetInlineFieldType('mastermenuid', DisplayData::INLINE_COMBOBOX, array('name' => 'mastermenuid', 'table' => 'mastermenu', 'where' => '', 'order_by' => 'text', 'asc' => 'ASC', 'value' => 'mastermenuid', 'display' => 'text', 'class' => 'body', 'pleaseselect' => true, 'commonelements' => array('Default' => 0), 'default' => '', 'noinput' => '', 'AllowNew' => false, 'newname' => '', 'new' => false, 'size' => 20)); // MasterMenu id
+        $usermenu->SetInlineFieldType('title', DisplayData::INLINE_TEXT, array('name' => 'title', 'class' => 'body', 'size' => '20', 'displayvalue' => 'title')); // Title 
 // Stop ordering
         $usermenu->hideOrder();
         $usermenu->setorder('orderfield');
@@ -305,17 +305,23 @@ function show()
                         ?>
                         <input type="submit" name="usestdmenu" value="Use Standard Menu" >
                     </td>
-                </tr>    
-                <tr>
+                </tr>
+            </table>
+        </form>
+           <table width="100%" border="0" background="Images/HeavenBackground.jpg"> 
+               <tr>
                     <td colspan="2">
                         <?php
-                        if ($_SESSION["datagrid"]["displaygrid"]) {
+                        if ($_SESSION["displaydata"]["displaygrid"]) {
                             // Print the table
                             $usermenu->printdata();
                         }
                         ?>
                     </td>
                 </tr>
+            </table>  
+        <form action= "setuplogin.php" method="post">
+            <table width="100%" border="0" background="Images/HeavenBackground.jpg"> 
                 <tr>
                     <td colspan="3">
                         <input type="submit" name="submit" value="Submit">

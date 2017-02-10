@@ -124,7 +124,7 @@ class Displaygrid
             if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["InLineEdit"])
             {
                 $displaydata = new DisplayData($db);
-                echo '<table class="brd">';
+                echo '<table class="brd" >';
                 echo        '<tr>';
                 echo           '<td>'; 
                 $displaydata->formopenfoot();

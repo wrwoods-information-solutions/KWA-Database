@@ -1,10 +1,18 @@
 <?php session_start(); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
-    <HEAD>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <link href="style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="popup-window.js"></script>
+        <script>
+            function keyCode(event) {
+                var x = event.keyCode;
+                if (x == 112) {
+                    alert("You pressed the f1 key!");
+                }
+            }
+        </script>
         <TITLE>KWA Input Person</TITLE>
         <?PHP
         require_once "displayrelationship.php";
@@ -59,8 +67,7 @@
         if (!isset($_SESSION['person']['mobilityplusid'])) {
             $_SESSION['person']['mobilityplusid'] = ' ';
         }
-        if (!isset($_SESSION['organization']['name']))
-        {
+        if (!isset($_SESSION['organization']['name'])) {
             $_SESSION['organization']['name'] = ' ';
         }
         if (!isset($_SESSION['displaydata']["relationship"]["displayrelationship"])) {
@@ -118,18 +125,15 @@
         $person = new person;
         $checknotes = new DisplayData($db);
         $checknotes->checknotes();
-        if ($_POST['personsave'] === (string) 'Save') 
-        {
+        if ($_POST['personsave'] === (string) 'Save') {
             $person->updaterecord($_SESSION["person"]['personid'], $_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['birthdate'], $_POST['mobilityplusid']);
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"] = 0;
         }
-        if ($_POST['persondelete'] == 'Delete')
-        {
+        if ($_POST['persondelete'] == 'Delete') {
             $person->deleterecord($_SESSION["person"]['personid']);
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"] = 0;
-        }    
-        if ($_POST['refreshperson'] == 'Refresh')
-        {
+        }
+        if ($_POST['refreshperson'] == 'Refresh') {
             if ($_POST['selectedperson'] == '0') {
                 $msg->DisplayMessage('selectperson');
                 $_SESSION['displaydata']["relationship"]["displayrelationship"] = false;
@@ -142,8 +146,7 @@
                 $_SESSION['displaydata']["notes"]["displaynotes"] = false;
                 $_SESSION["displaydata"]['person']["newperson"] = false;
             }
-            if ($_POST['selectedperson'] == -99) 
-            {
+            if ($_POST['selectedperson'] == -99) {
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"] = true;
                 $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["newperson"] = true;
                 $_SESSION['displaydata']["relationship"]["displayrelationship"] = true;
@@ -160,7 +163,7 @@
                 $_SESSION["person"]['personid'] = $_POST['selectedperson'];
                 if (isset($_SESSION ["displaydata"] ["name"])) {
                     $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"] = $_POST['selectedperson'];
-                   }
+                }
                 $tblperson = $person->getrecord($_SESSION["person"]['personid']);
                 $_SESSION['person']['firstname'] = $tblperson['firstname'];
                 $_SESSION['person']['lastname'] = $tblperson['lastname'];
@@ -179,18 +182,15 @@
                 $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]["default"] = $_POST['selectedperson'];
             }
         }
-        if ($_SESSION["displaydata"]['person']["newperson"]) 
-        {
+        if ($_SESSION["displaydata"]['person']["newperson"]) {
             $_SESSION["displaydata"]['person']["newperson"] = false;
             $_SESSION["person"]['personid'] = $person->insertrecord();
             $_POST[$_SESSION['displaydata']["name"] . 'editline'] = 'E1';
         }
-        if ($_SESSION["displaydata"]['person']["personnew"]) 
-        {
+        if ($_SESSION["displaydata"]['person']["personnew"]) {
             $_SESSION["displaydata"]['person']["newperson"] = true;
         }
-        if ($_SESSION["displaydata"]["relationship"]["click"]) 
-        {
+        if ($_SESSION["displaydata"]["relationship"]["click"]) {
             $_SESSION["displaydata"]["relationship"]["DisplayData"] = true;
         }
         if ($_SESSION["displaydata"]["membership"]["click"]) {
@@ -207,14 +207,14 @@
         $relationship->setdisplaydata('relationship');
         $relationship->SetTemplate('displayrelationship', $db);
 // Set the query, select all rows from the people table
-        $relationship->setQuery("personid,organizationid,relationship", "relationship", "", "personid = " . $_SESSION['person']['personid']);
+        $relationship->setQuery("relationshipid,personid,organizationid,relationship", "relationship", "", "personid = " . $_SESSION['person']['personid']);
         $relationship->setPrimaryID('relationshipid');
         $relationship->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $relationship->setURLConstant("inputperson.php");
         $relationship->setOrder('personid');
 
 // Hide ID field
-        $relationship->hidefield('personid');
+        $relationship->hidefield('relationshipid', 'personid');
 // Show reset grid control
         $relationship->showReset();
 
@@ -256,11 +256,11 @@
         $status->setdisplaydata('status');
         $status->SetTemplate('displaystatus', $db);
 // Set the query, select all rows from the people table
-        $status->setQuery("status", "status", "", "personid = " . $_SESSION['person']["personid"]);
+        $status->setQuery("statusid,status", "status", "", "personid = " . $_SESSION['person']["personid"]);
         $status->setPrimaryID('statusid');
         $status->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $status->setURLConstant("inputperson.php");
-        $status->setOrder('personid');
+        $status->setOrder('statusid', 'personid');
 
 // Hide ID field
         $status->hidefield('personid');
@@ -293,14 +293,14 @@
         $membership->setdisplaydata('membership');
         $membership->SetTemplate('displaymembership', $db);
 // Set the query, select all rows from the people table
-        $membership->setQuery("membership,expirydate", "membership", "", "personid = " . $_SESSION['person']['personid']);
+        $membership->setQuery("membershipid,membership,expirydate", "membership", "", "personid = " . $_SESSION['person']['personid']);
         $membership->setPrimaryID('membershipid');
         $membership->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $membership->setURLConstant("inputperson.php");
         $membership->setOrder('personid');
 
 // Hide ID field
-        $membership->hidefield('personid');
+        $membership->hidefield('membershipid', 'personid');
 // Show reset grid control
         $membership->showReset();
 
@@ -334,14 +334,14 @@
         $mobilityaid->setdisplaydata('mobilityaid');
         $mobilityaid->SetTemplate('displaymobilityaid', $db);
 // Set the query, select all rows from the people table
-        $mobilityaid->setQuery("mobilityaid", "mobilityaid", "", "personid = " . $_SESSION['person']["personid"]);
+        $mobilityaid->setQuery("mobilityaidid,mobilityaid", "mobilityaid", "", "personid = " . $_SESSION['person']["personid"]);
         $mobilityaid->setPrimaryID('mobilityaidid');
         $mobilityaid->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $mobilityaid->setURLConstant("inputperson.php");
         $mobilityaid->setOrder('personid');
 
 // Hide ID field
-        $mobilityaid->hidefield('personid');
+        $mobilityaid->hidefield('mobilityaidid', 'personid');
 // Show reset grid control
         $mobilityaid->showReset();
 
@@ -374,14 +374,14 @@
         $address->setdisplaydata('address');
         $address->SetTemplate('displayaddress', $db);
 // Set the query, select all rows from the people table
-        $address->setQuery("type,address1,address2,city,prov,postalcode", "address", "", "personid =" . $_SESSION['person']["personid"]);
+        $address->setQuery("addressid,type,address1,address2,city,prov,postalcode", "address", "", "personid =" . $_SESSION['person']["personid"]);
         $address->setPrimaryID('addressid');
         $address->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $address->setURLConstant("inputperson.php");
         $address->setOrder('personid');
 
 // Hide ID field
-        $address->hidefield('personid');
+        $address->hidefield('addressid', 'personid');
 // Show reset grid control
         $address->showReset();
 
@@ -430,14 +430,14 @@
         $telephone->setdisplaydata('telephone');
         $telephone->SetTemplate('displaytelephone', $db);
 // Set the query, select all rows from the people table
-        $telephone->setQuery("telephonetype,telephonenumber", "telephone", "", "personid = " . $_SESSION['person']["personid"]);
+        $telephone->setQuery("telephoneid,telephonetype,telephonenumber", "telephone", "", "personid = " . $_SESSION['person']["personid"]);
         $telephone->setPrimaryID('telephoneid');
         $telephone->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $telephone->setURLConstant("inputperson.php");
         $telephone->setOrder('personid');
 
 // Hide ID field
-        $telephone->hidefield('personid');
+        $telephone->hidefield('telephoneid', 'personid');
 // Show reset grid control
         $telephone->showReset();
 
@@ -459,7 +459,7 @@
         $telephone->SetFieldHeader('telephonenumber', 'Telephone Number:');
 //  set field type
         $telephone->SetFieldType('telephonetype', displaydata::TYPE_CODEDISPLAY, array('table' => 'telephone', 'field' => 'telephonetype', 'class' => 'body'));
-        $telephone->SetFieldType('telephonenumber', displaydata::TYPE_TELEPHONE, array('table' => 'telephone', 'field' => 'telephonenumber', 'size' => 10, 'class' => 'body'));
+        $telephone->SetFieldType('t0elephonenumber', displaydata::TYPE_TELEPHONE, array('table' => 'telephone', 'field' => 'telephonenumber', 'size' => 10, 'class' => 'body'));
         $telephone->SetFieldType('notes', displaydata::TYPE_NOTE, array('name' => 'telephonenotes', 'class' => 'subtitle', 'text' => 'Display Telephone Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputperson', 'notestype' => 'perstel'));
 //  set inlineedit field type
         $telephone->SetInlineFieldType('telephonetype', displaydata::INLINE_CODECOMBO, array('name' => 'telephonetype', 'table' => 'telephone', 'field' => 'telephonetype', 'class' => 'body')); // telephonetype
@@ -473,14 +473,14 @@
         $email->setdisplaydata('email');
         $email->SetTemplate('displayemail', $db);
 // Set the query, select all rows from the people table
-        $email->setQuery("emailtype,email", "email", "", "personid = " . $_SESSION['person']["personid"]);
+        $email->setQuery("emailid,emailtype,email", "email", "", "personid = " . $_SESSION['person']["personid"]);
         $email->setPrimaryID('emailid');
         $email->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $email->setURLConstant("inputperson.php");
         $email->setOrder('personid');
 
 // Hide ID field
-        $email->hidefield('personid');
+        $email->hidefield('emailid', 'personid');
 // Show reset grid control
         $email->showReset();
 
@@ -515,14 +515,14 @@
         $notes->setdisplaydata('notes');
         $notes->SetTemplate('Displaynotes', $db);
 // Set the query, select all rows from the people table
-        $notes->setQuery("notes", "notes", "", "");
+        $notes->setQuery("notesid,notes", "notes", "", "");
         $notes->setPrimaryID('notesid');
         $notes->setConstantFields(array("personid" => $_SESSION["person"]['personid']));
         $notes->setURLConstant("inputperson.php");
         $notes->setOrder('notesid');
 
 // Hide ID field
-        $notes->hidefield('personid');
+        $notes->hidefield('notesid', 'personid');
 // Show reset grid control
         $notes->showReset();
 
@@ -556,17 +556,17 @@
         if (!isset($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"]))
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"] = true;
         ?>
-    </HEAD>
-    <BODY>
+    </head>
+    <body>
         <?PHP
         $pref->header('Input Person');
         ?>
         <table class="tbl" width="100%">
             <tr>
                 <td colspan="13">
-        <?PHP
-        $pref->loadmenu();
-        ?>
+<?PHP
+$pref->loadmenu();
+?>
                 </td>
             </tr>
         </table>    
@@ -574,9 +574,9 @@
             <tr>
                 <td class='subtitle'> Select Person
                     <form id="selectperson" name="selectperson"  action="inputperson.php" method="post" enctype="multipart/form-data" >
-        <?php
-         echo $validate->ComboBox("selectedperson", "person", '', '', "ASC", "personid", "fullname", "body", $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"], array('New Person' => -99), $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"], false, false, "newperson", $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["personnew"], "20", $_SESSION["preferences"]["database"]["dbname"]);
-        ?>
+                    <?php
+                    echo $validate->ComboBox("selectedperson", "person", '', '', "ASC", "personid", "fullname", "body", $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"], array('New Person' => -99), $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"], false, false, "newperson", $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["personnew"], "20", $_SESSION["preferences"]["database"]["dbname"]);
+                    ?>
                         <input type="submit" class='subtitle' name="refreshperson" value="Refresh">
                     </form>
                 </td>
@@ -586,9 +586,9 @@
             <table class="tbl" width="100%">
                 <tr>
                     <td class ='subtitle'>First Name&nbsp:
-                    <?PHP
-                    echo'<input name="firstname" class="body" type="text" size=40 value="' . $_SESSION["person"]["firstname"] . '">';
-                    ?>        
+<?PHP
+echo'<input name="firstname" class="body" type="text" size=25 value="' . $_SESSION["person"]["firstname"] . '">';
+?>        
                     </td>
                     <td class="subtitle">Gender&nbsp:
 <?PHP
@@ -598,20 +598,20 @@ echo $validate->CodeCombo("gender", "person", "gender", "body", $_SESSION["perso
                 </tr>
                 <tr>
                     <td class ='subtitle'>Last Name&nbsp:
-<?PHP
-echo '<input name="lastname" class ="body" type="text" size = 40 value="' . $_SESSION["person"]["lastname"] . '">';
-?>   
+                        <?PHP
+                        echo '<input name="lastname" class ="body" type="text" size = 25 value="' . $_SESSION["person"]["lastname"] . '">';
+                        ?>   
                     </td>
                     <td>
 <?PHP
-echo $validate->DateCombo("birthdate", "body", "subtitle", "Birthdate : ", DATE($_SESSION["preferences"]["dateformat"],strtotime($_SESSION["person"]["birthdate"])));
+echo $validate->DateCombo("birthdate", "body", "subtitle", "Birthdate : ", DATE($_SESSION["preferences"]["dateformat"], strtotime($_SESSION["person"]["birthdate"])));
 ?>
                     </td>
                 </tr>
                 <tr>
                     <td class ='subtitle'>Full Name&nbsp;:
                         <?PHP
-                        echo '<input name="fullname" class ="body" type="text" size=45 value="' . $_SESSION["person"]["fullname"] . '">';
+                        echo '<input name="fullname" class ="body" type="text" size=30 value="' . $_SESSION["person"]["fullname"] . '">';
                         ?>   
                     </td>
                     <td class ='subtitle'>Mobility Plus Id.&nbsp;:
@@ -621,99 +621,139 @@ echo '<input name="mobilityplusid" class="body" type="text" size=7 value="' . $_
                     </td>
                 </tr>
             </table>
+          </form>  
             <table class="tbl" width="100%">
-                <td>
+                <tr>
+                    <td valign="top">
                         <table class="tbl" width="100%">
-                        <?PHP
-                        if ($_SESSION['displaydata']["status"]["displaystatus"]) {
-                            echo '<tr>
-                                        <td class ="subtitle">Status:</td>
-                                    </tr>
-                                    <tr>';
-                            $_SESSION["displaydata"] ["name"] = 'status';
-                            $status->printdata();
-                        }
-                        if ($_SESSION['displaydata']["relationship"]["displayrelationship"]) {
-                            echo '<tr>
-                                        <td class ="subtitle">Relationship:</td>
-                                    </tr>
-                                    <tr>
-                                        <td>';
-                            $_SESSION ["displaydata"] ["name"] = 'relationship';
-                            $relationship->printdata();
-                        }
-                        if ($_SESSION['displaydata']["address"]["displayaddress"]) {
-                            echo '<tr>
-                                        <td class ="subtitle">Address:</td>
-                                  </tr>
-                                   <tr>
-                                        <td>';
-                            $_SESSION ["displaydata"] ["name"] = 'address';
-                            $address->printdata();
-                        }
-                        if ($_SESSION['displaydata']["notes"]["displaynotes"]) {
-                            echo '<tr>
-                                        <td class ="subtitle">Person Note:</td>
-                                    </tr>
-                                    <tr>
-                                       <td>';
-                            $_SESSION["displaydata"] ["name"] = 'notes';
-                            $notes->printdata();
-                        }
-                        ?>
+                            <tr>
+                                <td class ="subtitle">Status:</td>
+                            </tr>
+                             <tr>
+                                 <td>
+                                   <?PHP
+                                        if ($_SESSION['displaydata']["status"]["displaystatus"]) 
+                                        {
+                                             $_SESSION["displaydata"] ["name"] = 'status';
+                                            $status->printdata();
+                                      }
+                                   ?>
+                                 </td>    
+                            </tr>
+                            <tr>
+                                  <td class ="subtitle">Relationship:</td>
+                            </tr>
+                            <tr>
+                                  <td>
+                                      <?PHP
+                                            if ($_SESSION['displaydata']["relationship"]["displayrelationship"]) 
+                                            {
+                                                $_SESSION ["displaydata"] ["name"] = 'relationship';
+                                                $relationship->printdata();
+                                             }
+                                      ?>
+                                  </td>
+                            </tr>     
+                            <tr>
+                                  <td class ="subtitle">Address:</td>
+                            </tr>
+                             <tr>
+                                   <td>
+                                       <?PHP
+                                            if ($_SESSION['displaydata']["address"]["displayaddress"]) 
+                                            {
+                                                $_SESSION ["displaydata"] ["name"] = 'address';
+                                                $address->printdata();
+                                            }
+                                        ?>
+                                   </td>
+                             </tr>   
+                             <tr>
+                                   <td class ="subtitle">Person Note:</td>
+                             </tr>
+                             <tr>
+                                   <td>
+                                       <?PHP
+                                            if ($_SESSION['displaydata']["notes"]["displaynotes"]) 
+                                            {
+                                                $_SESSION["displaydata"] ["name"] = 'notes';
+                                                $notes->printdata();
+                                            }
+                                        ?>
+                                   </td>
+                             </tr>    
                         </table>
                     </td>
                     <td valign="top">
                         <table class="tbl" width="100%">
-                            <?PHP
-                            if ($_SESSION['displaydata']["membership"]["displaymembership"]) {
-                                echo '<tr>
-                                        <td class ="subtitle">Membership:</td>
-                                    </tr>
-                                    <tr>
-                                        <td>';
-                                $_SESSION ["displaydata"] ["name"] = 'membership';
-                                $membership->printdata();
-                            }
-                            if ($_SESSION['displaydata']["mobilityaid"]["displaymobilityaid"]) {
-                                echo '<tr>
-                                        <td class="subtitle">Mobility Aid:</td>
-                                    </tr>
-                                    <tr>
-                                       <td>';
-                                $_SESSION["displaydata"] ["name"] = 'mobilityaid';
-                                $mobilityaid->printdata();
-                            }
-                            if ($_SESSION['displaydata']["telephone"]["displaytelephone"]) {
-                                echo '<tr>
-                                        <td class ="subtitle">Telephone:</td>
-                                    </tr>
-                                    <tr>
-                                       <td>';
-                                $_SESSION["displaydata"] ["name"] = 'telephone';
-                                $telephone->printdata();
-                            }
-                            if ($_SESSION['displaydata']["email"]["displayemail"]) {
-                                echo '<tr>
-                                        <td class ="subtitle">Email:</td>
-                                    </tr>
-                                    <tr>
-                                       <td>';
-                                $_SESSION["displaydata"] ["name"] = 'email';
-                                $email->printdata();
-                            }
-                            ?>
+                            <tr>
+                                    <td class ="subtitle">Membership:</td>
+                            </tr>
+                            <tr>
+                                   <td>
+                                        <?PHP
+                                            if ($_SESSION['displaydata']["membership"]["displaymembership"]) 
+                                            {
+                                                $_SESSION ["displaydata"] ["name"] = 'membership';
+                                                $membership->printdata();
+                                            }
+                                       ?>
+                                   </td>
+                            </tr>       
+                            <tr>
+                                    <td class="subtitle">Mobility Aid:</td>
+                            </tr>
+                            <tr>
+                                   <td>
+                                       <?PHP
+                                            if ($_SESSION['displaydata']["mobilityaid"]["displaymobilityaid"]) 
+                                            {
+                                                $_SESSION["displaydata"] ["name"] = 'mobilityaid';
+                                                $mobilityaid->printdata();
+                                            }
+                                       ?>
+                                   </td>
+                            </tr>       
+                            <tr>
+                                   <td class ="subtitle">Telephone:</td>
+                            </tr>
+                            <tr>
+                                   <td>
+                                       <?PHP
+                                            if ($_SESSION['displaydata']["telephone"]["displaytelephone"]) 
+                                            {
+                                                $_SESSION["displaydata"] ["name"] = 'telephone';
+                                                $telephone->printdata();
+                                            }
+                                       ?>
+                                   </td>
+                            </tr>       
+                            <tr>
+                                  <td class ="subtitle">Email:</td>
+                            </tr>
+                             <tr>
+                                  <td>
+                                        <?PHP
+                                             if ($_SESSION['displaydata']["email"]["displayemail"]) 
+                                             {
+                                                $_SESSION["displaydata"] ["name"] = 'email';
+                                                $email->printdata();
+                                            }
+                                        ?>
+                                  </td>
+                             <tr>      
                         </table>
                     </td>
             </table>
+        <form id="enterpersonsave" name="enterperson"  action="inputperson.php" method="post" enctype="multipart/form-data" >
             <table class="tbl" width="100%">
-               <tr>            
-                <td>
-                    <input type="submit" class ='subtitle' name="personsave" value="Save">
-                    <input type="submit" class ='subtitle' name="persondelete" value="Delete">
-                </td>
-            </tr>
-        </table>
-    </form>            
-</BODY>
+                <tr>            
+                    <td>
+                        <input type="submit" class ='subtitle' name="personsave" value="Save">
+                        <input type="submit" class ='subtitle' name="persondelete" value="Delete">
+                    </td>
+                </tr>
+            </table>
+        </form>            
+    </body>
 </HTML>

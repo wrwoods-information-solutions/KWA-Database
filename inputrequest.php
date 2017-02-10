@@ -9,7 +9,7 @@
 <?php
 require_once "class.preferences.php";
 if(isset($_GET["page"]))
-    $_SESSION['datagrid'][$_SESSION ["datagrid"] ["name"]]["page"] = (int)$_GET["page"];
+    $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["page"] = (int)$_GET["page"];
 $pref = new preferences;
 $pref->basicincludes();
 $pref->loadpreferences();

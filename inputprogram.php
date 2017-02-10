@@ -710,7 +710,7 @@ tinymce.init({
                         <?PHP
                             if ($_SESSION['displaydata']["budget"]["displaybudget"]) {
                                 echo '<tr>
-                                        <td class ="subtitle">Bodget:</td>
+                                        <td class ="subtitle">Budget:</td>
                                     </tr>
                                     <tr>
                                        <td>';
