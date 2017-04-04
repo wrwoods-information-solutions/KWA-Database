@@ -77,7 +77,7 @@ class Displaygrid
                             $order = ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["order"] ["order"] == 'ASC') ? 'DESC' : 'ASC';
                         else
                             $order = 'ASC';
-                        echo '<td class="tbl-header"><a href="javascript:;" onclick="tblSetOrder(\'' . $t['field'] . '\', \'' . $order . '\')">' . $header . "</a>";
+                        echo '<td class="tbl-header"><a href="javascript:;" onclick="tblSetOrder(\'' . $t . '\', \'' . $order . '\')">' . $header . "</a>";
 
                         // Show the user the order image if set
                         if ($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["order"] and $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["order"] ["field"] == $t)

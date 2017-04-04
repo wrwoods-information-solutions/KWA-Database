@@ -2755,11 +2755,11 @@ function newHorizontalBlockMenu($menu_name = "",$class)
                 {
                         if (!isset($_phpHorizontalBlockMenuRow[$cnt]["level"]))
                             $_phpHorizontalBlockMenuRow[$cnt]["level"] = '';
-			if ($parentid == $this->tree[$cnt]["parentid"]&& strlen($_phpHorizontalBlockMenuRow[$this->tree[$cnt]["level"]]['level']) == $cnt)
+    			if ($parentid == $this->tree[$cnt]["parentid"]&& strlen($_phpHorizontalBlockMenuRow[$this->tree[$cnt]["level"]]['level']) == $cnt)
           		{
 				$_phpHorizontalBlockMenuRow[$this->tree[$cnt]["level"]]['level'] = "";
 			} else {
-                                $_phpHorizontalBlockMenuRow[$this->tree[$cnt]["level"]]['level'] .= "   ";
+                                  $_phpHorizontalBlockMenuRow[$this->tree[$cnt]["level"]]['level'] .= "   ";
                                 $parentid = $this->tree[$cnt]["parentid"];
                         }
 			// output item text

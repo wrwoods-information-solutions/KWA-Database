@@ -7,33 +7,41 @@
 <title>KWA Conversion</title>
 <?php
         require_once "class.pdodatabase.php";
+        require_once "class.preferences.php";
         
         //connevt to databases
-
-        $accessin = new DBMS('odbc','localhost',$_SERVER["DOCUMENT_ROOT"].'/KWA Database/KWAA_CMDB_be.accdb','Admin','','');
-	$mysqlout = new DBMS('mysql','localhost','kwa','root','','');
-        
+        $pref = new preferences;
+        $pref->basicincludes();
+        $pref->loadpreferences();
+        $user = ''; //username
+        $password = ''; //password
+//path to database file
+        $database =$_SERVER["DOCUMENT_ROOT"].'/KWA Database/KWAA_CMDB_be.accdb';
+//check file exist before we proceed
+        if (!file_exists($database)) {
+            die("Access database file not found !");
+        }    
+        $accessin = new DBMS('odbc','localhost',$database,$user,$password,'');
+	$mysqlout = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]['database']['server'],$_SESSION["preferences"]["database"]["dbname"] ,$_SESSION["preferences"]['database']["user"],$_SESSION["preferences"]['database']["password"],$_SESSION["preferences"]['database']["port"]);
         //query into ASSOC arrays
  	$sqlc = "SELECT * FROM consumers";
         $consunersrst = $accessin->query($sqlc);
-        $tblcomsumers = $consunersrst->fetchAll(PDO::FETCH_ASSOC);
-                 foreach ($tblcomsumers as $name) 
-                {
-                     
-                 }
+        while ($row = $result->fetch()) 
+        {
+            echo $row["firstname"];
+        }
 	$sqls = "SELECT * FROM staff";
         $staffrst = $accessin->query($sqls);
-        $tblstaff = $staffrst->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($tblstaff as $name) 
-                {
-                    
-                }
- 	$sqlv = "SELECT * FROM volunteers";
+        while ($row = $result->fetch()) 
+        {
+            echo $row["firstname"];
+        }
+	$sqlv = "SELECT * FROM volunteers";
         $volunteersrst = $accessin->query($sqlv);
-        $tblvolunteers = $volunteersrst->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($_SESSION['displaydata']["notesinline"] as $name) 
-                {
-        
-                }
-?>
+        while ($row = $result->fetch()) 
+        {
+            echo $row["firstname"];
+        }
+
+        ?>
 </head>

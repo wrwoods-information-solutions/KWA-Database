@@ -1,0 +1,164 @@
+1,"Jerry","Basnicki",,"650 Mountian Maple","Waterloo",,"5198844480",,,,,,,"1","5607"
+2,"Mary","Basnicki",,"169 Borden Ave N.","Kitchener",,"5195852213",,,,,,,"1","5608"
+3,"Lynne","Black",,"25 Country Hill Drive Apt#B09","Kitchener",,"5195698877",,,,,,,"1","1059"
+4,"Pam","Chaterson",,"200David Bergy Dr.","Waterloo",,"5195702115",,,,,,,"1","5442"
+5,"Wanda","Coxs",,"446 Kingscourt Apt# 212","Waterloo","N2K 3S1","5197472966",,,,,,"wandacoxs@rogers.com","1","6325"
+6,"Anne","Couchie",,"2969 Kingsway Dr. Apt # 302","Kitchener",,"5199546903",,,,,,,"1","1869"
+7,"Susan","Czajkowskyi",,"695 Strausburg Rd. Apt# 202","Kitchener",,"5195792418",,,,,,"czajk91@rogers.com",,"3604"
+8,"Dana","Dyer",,"200 Jameson PKwv","Cambridge","N3C 4B5","5196512856",,,,,,,,"1971"
+9,"Arthur","Girard",,"695 Strausburg Rd. Apt# 309","Kitchener","N2E 2I4","5195789337",,,,,,,"1","1271"
+10,"Mary","Goetz",,"1420 King Street E. Apt# 14","Kitchener","N2G 4Z8","5198865932",,,,,,,"1","4380"
+11,"Charles","Girard",,"407-20 Union Lane.","Kitchener","N2H 6T2","5197455146",,,,,,,"1","1272"
+12,"Missy","Hammer",,"130 Lincoln Rd.","Waterloo",,"5194969674",,,,,,,"1","2151"
+13,"Star","Hassard",,"105-88 Brybeck Cr.","Kitchener","M2M 2C6","5197444356",,,,,,,"1","443"
+14,"Bruce","Hassard",,"105-88 Brybeck Cr.","Kitchener","N2M 2C6","5197444356",,,,,,,"1",
+15,"Rebekah","Haynes",,"1240 Queen's Blvd.","Kitchener","N2M 1R4","2262203633",,,,,,"revekah.h1@amail.com","1",
+16,"Micheal","Hinschberger",,"113-20 Union Lane","Kitchener","N2H 6T2","5195795084",,,,,,,"1","484"
+17,"Janelle","Jamieson",,"1195 King St. E. Cambridge","Kitchener",,"5192191359",,,,,,"jljamieson90@hotmail.com","1","1748"
+18,"Donna","Lemieux",,"650 Mountain Maple Ave.","Waterloo","N2V 2P7","5198858863",,,,,,,"1","3009"
+19,"Liz","Manherz",,"128 Holborne Dr.","Kitchener",,"5198967068",,,,,,,"1","1949"
+20,"Alyson","Martin",,"446 Kingscourt Dr.","Waterloo","N2K 3R9","5198853471",,,,,,"alym@teksavvy.com","1","2201"
+21,"Steve","Martin",,"29-1 Church Street, W.","Elmira","N3B 1M2","5196692727",,,,,,,"1",
+22,"Jeff","McKinnon",,"20 Flint Dr.","Kitchener","N2E 1A2","5195700494",,,,,,"crossguard5@hotmail.com","1","7541"
+23,"Rhea","Meyer",,"446 Kingscourt Dr.","Waterloo","N2K 3R9","5198887998",,,,,,"queenliz379@hotmail.com","1","680"
+24,"David","O'brian",,"188 Huber Street","Kitchener",,"5198932549",,,,,,,"1","6778"
+25,"Jay","Oswald",,"50 Mooregate Cr.","Kitchener",,"5195717337",,,,,,,"1","278"
+26,"Ken","Parker",,"241 Victoria St. S.","Kitchener",,"5195702427",,,,,,"kenparker@rogers.com","1","9248"
+27,"David","Perry",,"446-306 Kingscourt Dr.","Waterloo","N2K 3R9","5198867857",,,,,,,"1","3086"
+28,"Carlos","Peters",,,,,"5198945510",,,,,,,"1",
+29,"Alicia","Pyke","Traverse (Life Skills Worker )","20 Union Lane","Kitchener","N2H 6T2","5197415845",,,,,,,"5",
+30,"Lorraine","Reid",,"436 Kingscourt Dr.","Waterloo",,"5198800738",,,,,,,"1","9127"
+31,"Alicia","Peters",,"476 Pioneer Dr","Kitchener","N2P 1N5","5198945510",,,,,,,"2",
+32,"Helen","Renaud",,"446-206 Kingscourt Dr.","Waterloo","N2K 3R9","5197466380",,,,,,,"1","2122"
+33,"Linda","Ryan",,"446-209 Kingscourt Dr.","Waterloo","N2K 3R9","5198848036",,,,,,"lryan@kwa.on.ca","1","3071"
+34,"Tiffany","Schmidt",,"23 Old Chicopee Drive.","Kitchener","N2A 2V5","5198948911",,,,,,"tiffanianddean@rogers.com","1","1073"
+35,"Susan","Shantz",,"247 Franklin St. N.","Kitchener","N2A 1Y5","5198963898",,,,,,,"1","887"
+36,"Khon","Souksanh",,"506 Westforest Trail","Kitchener","N2N 3J4","5195798781",,,,,,,,
+37,"Tod","Chatters",,"282 Canterbury Dr.","Waterloo",,"5198849848",,,,,,"toddc640@gmail.com","1","2246"
+38,"Kayla","Leitch","Volunteer from UfW",,"Kitchener",,"2268686975",,,,,,,"3",
+39,"Abe","Asart",,"82 Snowdrop Crt.","Kitchener","N2E 4G5","5195797087",,,,,,,,
+40,"Paul","Boehm",,"645  Queen Street N.","MountForest","N0G 2L1","5197222181",,,,,,"pjboehm@gmail.com","1",
+41,"Alex","Romero",,"578 Penny Lane","Waterloo","N2T 2L3","5192082219",,,,,,"brromero@yahoo.com","1",
+42,"Andrea","Beohm",,"601-55 William S.","Waterloo","N2J 4Z1","5198862033",,,,,,,,
+43,"Angela","Yensen",,,"Elmira",,"5195772431","Angela Yenson",,"Angela is Lois Wingers Social Worker.
+Angela sometime will arange appoints with Ron Fleming for Lois.",,,,"2",
+44,"Angie","Gonder",,,"Stratford",,,,,,"5192735826",,,"1",
+46,"Arneil","Boutilier",,,,,"5192084757",,,,,,,,
+47,"Barbara","Steinman",,"15 Hoffman St.","Kitchener",,"5195765767",,,,"5195009431",,,"1","5110"
+48,"Barry","Ek",,"695- Strausburg Rd.","Kitchener","N2E 2L4","5195847364",,,,,,,"1","2574"
+49,"Becca","Trewin",,"14 Williamsburg Rd. Apt # 21","Kitchener",,"5197453522","Catherine Trewin",,"Catherine Trewin in Becca mother some time confirms appointment or booking for Becca. Always confirm with Catherine when dealing with Becca.",,,,"1","18980"
+50,"Benjamin","Koeber",,"387 Ascot Place","Waterloo","N2J 3V9","5198845408",,,,,,,"1","3055"
+51,"Bev","Arnott",,,,,"5196349317",,,,,,,,
+52,"Bev","Duchane",,,"Waterloo",,"5198848643",,,,,,,,
+53,"Bob","Kirkey",,"180 Old Abby Rd.","Waterloo","N2K 4B2","5198845408",,,,,,,"1",
+54,"Brain","Bender",,,,,"5196621773",,,,,,,,
+55,"Brain","Hoffman",,"210-26 Fourth Ave","Kitchener",,"5198931959",,,,"5195024986",,"Bhoffman6-@sympatico.ca","1",
+56,"Brandy","Martin-Duchesne",,"209 Springfeild Crt.","Waterloo","N2T 2N1","5195761117",,,,,,,"2",
+57,"Brenda","Sweeny",,"20 Union Lane Apt# 309","Kitchener","N2H 6T1","5197440171",,,,,,,"1","783"
+58,"Brenda","Brown",,"650 Mountian Maple Ave","Waterloo","N2V 2P7","5198844480",,,,,,,"1",
+59,"Bruce","Mutton",,"394 Veronica Dr.","Kitchener","N2A 4E8",,,,,,,,"2",
+60,"Carey","Ruby",,"128 Mooregate Crt.","Kitchener","N2M 2G1","5192084315",,,,,,"carey@intrnear.com","1",
+61,"Carol","Hobbs",,"210 Fourth Ave. Apt# 31","Kitchener","N2C 1P2","5198933035",,,,,,"Carolhobbs @yahoo.ca","7",
+62,"Catherine","Lang",,"46 Lanaric Crt.","Kitchener",,"5196546642",,,,,,,,"7624"
+63,"Catherine","Trewin",,"14 Williamsburg Rd. Apt# 21","Kitchener","N2E 1W1","5197453522","Catherine Trewin",,"Call Catherine to book appoints or mobility plus bookings.",,,,"2",
+64,"Cathy","Desmond","Plant Lady Volunteer",,,,"5198967657",,,"Be sure to phone Cathy to let her know the Plant Lady booking and make sure she availabe for the date or dates.",,,,"1",
+65,"Chris","Karn",,"210 Fourth Ave. Apt# 11","Kitchener","N2C 1P2","5198939037",,,,,,"c.karn@sympatico.ca","1","18742"
+66,"Chris","Morton",,"119 Gourth Ave","Kitchener","N2C 1N9","5198941869",,,,,,,"1",
+67,"Christine","Wahl",,"3289 King St. E.","Kitchener","N2A 4A6","5198943181",,,,,,,"1","1006"
+68,"Cindy","Eby",,"252 Snyders Rd. E.","Baden",,,,,,,,,,
+69,"Clayton","Lynch",,"210 Fourth Ave. Apt# 51","Kitchener","N2C 1P2","5198961497",,,,,,,"1",
+70,"Clifford","Voll",,"3658 Lobsinger Line","St. Clements","N0B 2M0","5196995717",,,,,,"cliffvoll@hotmail.com","1",
+71,"Clive","Milo",,"353 Browning Pl.","Waterloo","N2L 2W2","5198840844",,,,,,,"1",
+72,"Colin","Sweeny",,"20 Union Lane Apt# 309","Kitchener","N2H 6T1","5197440171","Brenda Sweey","5197440171","Please do any booking through Brenda Sweeny who is Colins wife.",,,,"1","2821"
+73,"Dan","Gervias",,"20 Union Lane","Kitchener",,"5195687080",,,,,,"dannygervais@hotmail.com","1","384"
+74,"Vivian","Berkeley",,"201 Fairfield Ave.","Kitchener","N2H 6C4","5197459345",,,,,,"vberkeley@sympatico.ca",,
+75,"Wendy","Gaus",,"518 Greenfield Ave.","Kitchener","N2C 1G2","5198966115",,,,,,,,
+76,"Patrick","Yanchus",,"31 Jean Ave.","Kitchener","N2A 1P2","5198940626","Bell Relay",,"Patrick is hearing impaired so you will have to call bell TTY. They will instructed you on how this communication works.",,,,"1",
+77,"Yves","Bergeron","CNIB","749 Base Line Rd. E.","London","N6C 2R6","5196858420",,,"Yves Bergeron's extention 5130",,,,"5",
+78,"Zivko","Munich",,,,,"5197447726",,,,,,,"1",
+79,"Zoren","Misic",,"60 Westheights Dr. (LTCC)","Kitchener","N2N 2A8","5195763320","Bozica Misic","5198858549","Please call Bozica at the above # . Please corispond with her for any booking or appointment.Deb",,,,"1","7153"
+80,"Deb","Bailey",,,,,"5198937840",,,,,,,,
+81,"Dennis","Downy",,"46 Muscovey Dr.","Elmira","N3B 3M6","5196695318",,,,,,,"1",
+82,"Diane","Arnold",,"375-1603 King St.","Waterloo","N2J 4L6","5198880902",,,,,,"diane.arnold@rogers.com",,"11572"
+83,"Dick","Wendling",,"42 Hilltop Dr.","Ayr","N0B 1E0","5196327989",,,,,,,"1",
+84,"Don","Ferguson",,"650 Mountain Maple","Waterloo","N2V 2P7","5197466379",,,,,,,"1","340"
+85,"Donna","Brown",,"20 Union Lane","Kitchener","N2H 6T1","5197410592",,,,,,,"1","153"
+86,"Donna","McClellan",,"445-104 Kingscourt","Waterloo","N2K 3R9","5199545859",,,,,,,,
+87,"Elizabeth","Martens",,"180-311 Brybeck Crt.","Kitchener","N2M 5G4","5195763153",,,,"5195020432",,"grace2759@hotmail.com","1",
+88,"Emil","Weyer",,"38-2 Troy St.","Kitchener","N2F 1X1","5197419031",,,,,,,"1",
+89,"Erwin","Faruzel",,,"Kitchener",,"5197832453","Edward Faruzel (ext) 201","5198856640",,,,,"1",
+90,"Frank","Austin",,,,,"5196090568",,,,,,,,
+91,"Fred","Martin",,,,,,,,,,,,"1",
+92,"Gerry","Winget",,"20 Union Lane","Kitchener","N2H 6T2",,,,,,,,,"6908"
+93,"Gina","Graci",,"18 Jadestone Cres.","Kitchener","N2A 3X8","5197481789",,,,,,,"1","380"
+94,"Gloria","Bryan",,"903-102 Elgin St. N.","Cambridge",,"5192674065",,,,,,,"1",
+95,"Gwen","Thrower",,"55 Dover St.","Waterloo","N2J 1Y9","5191737531",,,,,,,"1","958"
+96,"Greg","Stroh",,"31 Everstone Ave.","Kitchener","N2R 1N8","5197485198",,,,,,,"1",
+97,"Ivan","Girard",,"60 Westheights Dr.","Kitchener","N2N 2A8","5195783397",,,,,,,"1",
+98,"Jane","Lucy",,"44-B Ellen St E.","Kitchener","N2H 1L4","5197459280",,,,,,,,
+99,"Jason","Chivers",,,,,"5192085498",,,,,,,,
+100,"Jean","Malio",,"73 Melinda St.","Kitchener","N2E 0B5","5197436244",,,,,,,"1",
+101,"Jeff","Blattler",,,,,"5195022933",,,,,,,,
+102,"Jeff","Butler",,,,,"5195044077",,,,,,,,
+103,"Jerome","Hawco",,,,,"5192426280",,,,,,"jhawco@gmail.com","1",
+104,"Jerry","Jurkovic",,"110-10 Westwood Dr.","Kitchener","N2M 5P2","5197428439",,,,,,,"1",
+105,"Jewel","Schneider",,"436 Kingscourt Dr. Unit 21","Waterloo",,"2268080341",,,,,,,"1","11762"
+106,"Jim","Sysiuk",,"55 Green Valley Dr.","Kitchener","N2P 1Z6","5198932165",,,,,,,"1",
+107,"Jim","Bennett","Freeport Hospital","3570 King St. East","Kitchener","N2A 2W1","5198946853",,,,,,,"5",
+108,"Jim","Hunsberger",,,,,"5198838623",,,,,,,,
+109,"John","Caldwell",,"214 Cornwall St.","Waterloo","N2J 1H8","5195718517",,,,,,,"1","23268"
+110,"John","Schmidt","(LTC Lemark Heights)","46 Lemark Heights Crt.","Kitchener",,"5197434200",,,"(LTC Lemark Heights)
+John Scdmitt is a resident  at the above location",,"5197434225",,"1",
+111,"Donna","Serpa",,"20 Union Lane","Kitchener","N2H 6T2","5195787232",,,,,,"james@phwaterlo.org","1",
+112,"Joy","Bergmann",,,,,"5195767774",,,,,,,,
+113,"Julia","Taylor",,"80-504 Holborn Dr.","Kitchener","N2A 2V8","5198948938",,,,,,,"1","7817"
+114,"Julie","England",,"20-207 Union Lane","Kitchener","N2H 6T2","5199545062",,,,"5194974761",,,"1","11371"
+115,"Kaniz","Dhrolia",,"357 Westwood Dr.","Kitchener","N2M 2L3","5195767762",,,,,,,"1",
+116,"Katie","Benham",,"26 Lyndhurst Dr.","Kitchener","N2B 1B5","5195711677",,,,,,,,
+118,"Ken","Hart","Lurtherwood",,,,"5197432460","Ken Hart (ext) 255",,"Ken works at Lutherwood",,,,"5",
+119,"Kerri","Speakman",,"695 Strausburg Rd.","Kitchener","N2E 4A2","2267914993",,,,,,,"1","2806"
+120,"Lois","Winger",,,"Elmira",,"5192100130",,,,,,,"1",
+121,"Magdalene","Sukk",,"3085- 140 Franklin St. N.","Kitchener","N2J 1Y2","5193420473",,,,,,,"1",
+122,"Mary","Basnicki",,"169 Borden Ave N.","Kitchener",,"5195852213",,,,,,,,
+123,"Mary","Goetz",,"1420 King St. E. Apt# 14","Kitchener","N2G 4Z8","5198865932",,,,,,,"1","4380"
+124,"Mary","Ciszewski",,"20 Union Lane E. Apt# 211","Kitchener","N2H 6T1","5195795636",,,,,,,"1","246"
+125,"Micheal","Hinschberger",,"20 Union Lane Apt# 113","Kitchener","N2H 6T1","5195795084",,,,,,,"1","484"
+126,"Micheal","Cameron",,"139 Beckenridge Dr.","Kitchener","N2B 3R8","5199540454",,,,,,,,
+127,"Mike","Began",,"180 Highland Crt. Apt#14","Kitchener","N2M 5K5","5195780674",,,,,,,"1",
+128,"Mike","Yantzi",,,"Kitchener",,"5197420784",,,,,,,"1",
+129,"Mill","Shelley",,"446 Kingscourt Dr. Apt# 215","Waterloo","N2K 3R9","5198854442",,,,,,,"1",
+130,"Missy","Hammer",,"130 Lincoln Rd","Waterloo",,"5194969674",,,,,,,"1","2151"
+131,"Murad","Dhrolia",,"357 Westwood Dr.","Kitchener","N2M 2L3","5195767762",,,,,,,"1",
+132,"Natasha","Heeralal",,"170 Chandler Dr.","Kitchener","N2E 1G9","5195704735",,,,,,"natashaheeralall@hotmail.com","1","5859"
+133,"Pat","Trimmer",,"695 Strausburg Rd. Apt# 695","Kitchener","N2E 4A2","5195704876",,,,,,"ptrimmer@rogers.com","1","6272"
+134,"Pat","Stojsic",,"95 Blackhorne Dr.","Kitchener","N2E 1T5","5197424014",,,,,,"patriciastojsic@hotmail.com","1","763"
+135,"Patti","Duke",,"446 Kingscourt Dr. Apt# 312","Waterloo","N2K 3R9","5199544584",,,,,,"patti9935@gmail.com","1","11010"
+136,"Patty","Lehman","Brain Injury Association (W-W)","607 Kings St. W.","Kitchener",,"5195795300",,,,,,,"5",
+137,"Paul","McLay",,"20 Union Lane Apt# 409","Kitchener","N2H 6T2","5197426339",,,,,,"hawk711@sympatico.ca",,"632"
+138,"Peter","Bender",,,,,"515857971",,,,,,,,
+139,"Randy","Barrett",,"50 Mooregate Crt.","Kitchener","N2M 5G6","5195795358",,,,,,,,
+140,"Ric","Woods",,"446 Kingswood Dr.","Waterloo","N2K 3R9","5198866167",,,,,,"ric@wrwoods.com","1",
+141,"Rick","Clinch",,"446 Kingscourt Dr. Apt# 109","Waterloo","N2K 3R9","5198867870",,,,,,,"1",
+142,"Robert","Skilling",,"14 Pattison Pl.","Fergus","N1M 3V3","5197878587",,,,,,,"1",
+143,"Rocky","Boyd",,,,,"5199988092",,,,,,,"1",
+144,"Roland","Schlosser","CNIB",,"Kitchener",,"5195716762",,,,,,,"5",
+145,"Ron","Herzog",,"32 Inadale Crt.","Kitchener","N2M 2Z8","5197447973",,,,,,,,
+146,"Ron","Martin",,"29 Church St. W.","Elmira","N3B 1M2","5196692727",,,,,,,"1",
+147,"Salahadin","Mohammad",,,,,"5195794171",,,,,,,,
+148,"Sally","Haslam",,"165-321 Duke St.","Kitchener","N2H 6E8","5195687611",,,,,,,"1",
+149,"Sarah-Jean","Blundon",,"25 Tamroth Close.**?","Kitchener","N2M 3S9","5199542240",,,,,,"squeekyclean222@hotmail.com",,"1766"
+150,"Saul","Herzog",,"32 Elgin St.","Waterloo","N2J 2R1","5198854743",,,,,,"sherzog@uwaterloo.ca","1",
+151,"Sharon","Ward-Zeller",,"55 Briar Knoll Dr.","Kitchener","N2E 1X9","5195781395",,,,"5197722609",,"swz@golden.net","1","5194"
+152,"Sharron","Garrah",,"446 Kingscourt Dr. Apt# 310","Waterloo","N2K 3R9","5198844541",,,,,,,"1","375"
+153,"Steve","Smith",,"405 Dayna Crt.","Waterloo","N2K 3K6","5197475569",,,,"5199883673",,,"1",
+154,"Steve","Morrison",,"20 Union Lane Apt# 111",,"N2H 6K1","5197422892",,,,,,,"1","1847"
+155,"Tony","Polyak",,"965 Stonebrook Rd.","Galt","N1T 1H4","5196239335",,,,,,,"1",
+156,"Tony","Daciuk",,"115 Church N","Mount Forest",,"5193232986",,,,,,,"1",
+157,"Veronica","Miller",,"295-206 Champlain Blvd.","Camgridge","N1R 6W2","5196582217",,,,"5196223312",,,,
+158,"Pat","Anderson",,"10 Westgate Crt. Apt# 105","Cambridge","N1S 3V5","5196233939",,,,,,,"1","24263"
+159,"Ruzica","Senjak",,"241 Victoria St. S. Unit 710","Kitchener","N2G 2C1","5195840907",,,,,,"rsenjak@rogers.com","1","7158"
+160,"Carmen","Sutherland",,"372 River Oak Place","Waterloo","N2K 3P8","5195007153",,,,,,,"1",
+161,"Todd","Chartters",,"282 Canterbury Dr.","Waterloo",,"5198849848",,,,,,,"1","22469"
+162,"Xanthe","Martin",,"590 Kraus Drive","Waterloo","N2L 6K3","5198862502",,,,,,"xanthemartin@gmail.com","1","2445"
+163,"Andre","Rutherford",,"3189 King St East # 712","Kitchener","N2A 1B2","5192085268",,,,,,"lion68@live.com","1","18445"
+164,"Adam","Abakar",,"98 bictoria St. S.","Kitchener","N2G 2B3","5197443087",,,,,,,,

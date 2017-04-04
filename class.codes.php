@@ -17,10 +17,8 @@ class codes {
 	function insertrecord($code='new',$title='new') 
 	{
 		$sql = 'INSERT INTO codes (code,title) VALUES (\''. $code.'\', \''. $title.'\')';
-		echo __LINE__.'Codes insertrecord sql = '.$sql.'<br>';
-    	$db = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]["database"]['server'],$_SESSION["preferences"]["database"]["dbname"] ,$_SESSION["preferences"]["database"]["user"],$_SESSION["preferences"]["database"]["password"],$_SESSION["preferences"]["database"]["port"]);
+        	$db = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]["database"]['server'],$_SESSION["preferences"]["database"]["dbname"] ,$_SESSION["preferences"]["database"]["user"],$_SESSION["preferences"]["database"]["password"],$_SESSION["preferences"]["database"]["port"]);
 		$results = $db->query($sql);
-		echo __LINE__.' $db->affectedRows($results) = '.$db->affectedRows($results).'<br>';
 		if ($db->affectedRows($results) == 1) 
 		{
 				WHILE ($row = $db->fetchAssoc($results)) 

@@ -20,7 +20,9 @@ require_once "displayaddress.php";
 require_once "displaytelephone.php";
 require_once "displayemail.php";
 require_once "displaynotes.php";
+require_once "displayprogramobjective.php";
 require_once "displaygrid.php";
+require_once "displayservicecode.php";
 
 class DisplayData {
 

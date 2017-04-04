@@ -397,6 +397,7 @@ if (!isset($_SESSION["preferences"]))
                 name                varchar(50),
                 department          varchar(3),
                 description         text,
+                status              varchar(3),
                 creationdate        date, 
                 updatedate          date, 
                 createdby           varchar(10),   
@@ -408,7 +409,7 @@ if (!isset($_SESSION["preferences"]))
             (
                 programobjectiveid     int    NOT NULL auto_increment,
                 programid              int,
-                programobjective       varchar(13),
+                programobjective       text,
                 creationdate           date, 
                 updatedate             date, 
                 createdby              varchar(10),   
@@ -420,7 +421,8 @@ if (!isset($_SESSION["preferences"]))
             (
                 programmeasureid        int    NOT NULL auto_increment,
                 programid              int,
-                programmeasure         varchar(13),
+                programobjectiveid     int,
+                programmeasure         text,
                 creationdate           date, 
                 updatedate             date, 
                 createdby              varchar(10),   
@@ -428,6 +430,20 @@ if (!isset($_SESSION["preferences"]))
                 PRIMARY KEY (programmeasureid)
             )';
             $result25 = $DB->query($sql25) or die(mysql_error());
+            $sql25a = 'CREATE TABLE IF NOT EXISTS programresponse 
+            (
+                programresponseid      int    NOT NULL auto_increment,
+                programid              int,
+                programobjectiveid     int,
+                programmeasureid       int,
+                programresponse        text,
+                creationdate           date, 
+                updatedate             date, 
+                createdby              varchar(10),   
+                updateby               varchar(10),
+                PRIMARY KEY (programresponseid)
+            )';
+            $result25a = $DB->query($sql25a) or die(mysql_error());
             $sql26 = 'CREATE TABLE IF NOT EXISTS programlocation 
             (
                 programlocationid      int    NOT NULL auto_increment,
@@ -456,7 +472,7 @@ if (!isset($_SESSION["preferences"]))
             (
                 equipsupplyid          int    NOT NULL auto_increment,
                 programid              int,
-                equipsupply            varchar(13),
+                equipsupply            tex,
                 creationdate           date, 
                 updatedate             date, 
                 createdby              varchar(10),   
@@ -468,14 +484,26 @@ if (!isset($_SESSION["preferences"]))
             (
                 programsetupid         int    NOT NULL auto_increment,
                 programid              int,
-                setup                  varchar(13),
+                setup                  text,
                 creationdate           date, 
                 updatedate             date, 
                 createdby              varchar(10),   
                 updateby               varchar(10),
                 PRIMARY KEY (programsetupid)
             )';
-            $result29 = $DB->query($sql29) or die(mysql_error());
+            $sql29a = 'CREATE TABLE IF NOT EXISTS programbudget 
+            (
+                programbudgetid        int    NOT NULL auto_increment,
+                programid              int,
+                item                   varchar(20),
+                amount                 decimal(10,2),
+                creationdate           date, 
+                updatedate             date, 
+                createdby              varchar(10),   
+                updateby               varchar(10),
+                PRIMARY KEY (programbudgetid)
+            )';
+            $result29a = $DB->query($sql29a) or die(mysql_error());
             $sql30 = 'CREATE TABLE IF NOT EXISTS refreshments 
             (
                 refreshmentsid         int    NOT NULL auto_increment,
@@ -555,7 +583,7 @@ if ($_POST['submit'] == 'Submit')
 	<td align="center" class="headtitle"></td>
 	 <td width="20%" colspan="2">
   		<form action= "index.php?LC_ACTION=Logout"  method="post">
-			<input class="button" type="submit" name="LC_ACTION" value='Logout' /></p>
+			<input class="button" type="submit" name="LC_ACTION" value='Logout' />
 		</form>	</td>
    </tr>
    <tr>

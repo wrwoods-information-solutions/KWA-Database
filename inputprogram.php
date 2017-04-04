@@ -47,49 +47,28 @@ tinymce.init({
             $_POST['refreshprogram'] = '';
         if (!isset($_POST['refreshname']))
             $_POST['refreshname'] = '';
-        if (!isset($_POST['programlocationnotes']))
-            $_POST['programlocationnotes'] = '';
-        if (!isset($_POST['setupnotes']))
-            $_POST['setupnotes'] = '';
-        if (!isset($_POST['equipsupplynotes']))
-            $_POST['equipsupplynotes'] = '';
-        if (!isset($_POST['programnotes']))
-            $_POST['programnotes'] = '';
         if (!isset($_SESSION['program']['programid'])) {
             $_SESSION['program']['programid'] = 0;
         }
-        if (!isset($_SESSION['program']['firstname'])) {
-            $_SESSION['program']['firstname'] = ' ';
+        if (!isset($_SESSION['displaydata']["program"]["displayprogramnamedept"])) {
+            $_SESSION['displaydata']["program"]["displayprogramnamedept"] = false;
         }
-        if (!isset($_SESSION['program']['lastname'])) {
-            $_SESSION['program']['lastname'] = ' ';
+        if (!isset($_SESSION['displaydata']["program"]["displayprogramrecurrence"])) {
+            $_SESSION['displaydata']["program"]["displayprogramrecurrence"] = false;
         }
-        if (!isset($_SESSION['program']['fullname'])) {
-            $_SESSION['program']['fullname'] = ' ';
+        if (!isset($_SESSION['displaydata']["program"]["displayprogramnote"])) {
+            $_SESSION['displaydata']["program"]["displayprogramnote"] = false;
         }
-        if (!isset($_SESSION['program']['gender'])) {
-            $_SESSION['program']['gender'] = ' ';
-        }
-        if (!isset($_SESSION['program']['birthdate'])) {
-            $_SESSION['program']['birthdate'] = ' ';
-        }
-        if (!isset($_SESSION['program']['mobilityplusid'])) {
-            $_SESSION['program']['mobilityplusid'] = ' ';
-        }
-        if (!isset($_SESSION['organization']['name']))
-        {
-            $_SESSION['organization']['name'] = ' ';
-        }
-        if (!isset($_SESSION['displaydata']["programlocation"]["displayprogramlocation"])) {
-            $_SESSION['displaydata']["programlocation"]["displayprogramlocation"] = false;
+        if (!isset($_SESSION['displaydata']["programlocation"]["displaygrid"])) {
+            $_SESSION['displaydata']["programlocation"]["displaygrid"] = false;
         }
         if (!isset($_SESSION['displaydata']["programobjective"]["displayprogramobjective"])) {
             $_SESSION['displaydata']["programobjective"]["displayprogramobjective"] = false;
         }
         if (!isset($_SESSION['displaydata']["setup"]["displaysetup"]))
             $_SESSION['displaydata']["setup"]["displaysetup"] = false;
-        if (!isset($_SESSION['displaydata']["programresponsible"]["displayprogramresponsible"])) {
-            $_SESSION['displaydata']["programresponsible"]["displayprogramresponsible"] = false;
+        if (!isset($_SESSION['displaydata']["programresponsible"]["displaygrid"])) {
+            $_SESSION['displaydata']["programresponsible"]["displaygrid"] = false;
         }
         if (!isset($_SESSION['displaydata']["programresponsible"]["click"])) {
             $_SESSION['displaydata']["programresponsible"]["click"] = false;
@@ -100,8 +79,8 @@ tinymce.init({
         if (!isset($_SESSION['displaydata']["programlocation"]["click"])) {
             $_SESSION['displaydata']["programlocation"]["click"] = false;
         }
-        if (!isset($_SESSION['displaydata']["equipsupply"]["displayequipsupply"])) {
-            $_SESSION['displaydata']["equipsupply"]["displayequipsupply"] = false;
+        if (!isset($_SESSION['displaydata']["equipsupply"]["displaygrid"])) {
+            $_SESSION['displaydata']["equipsupply"]["displaygrid"] = false;
         }
         if (!isset($_SESSION['displaydata']["equipsupply"]["click"])) {
             $_SESSION['displaydata']["equipsupply"]["click"] = false;
@@ -112,14 +91,14 @@ tinymce.init({
         if (!isset($_SESSION['displaydata']["servicecode"]["click"])) {
             $_SESSION['displaydata']["servicecode"]["click"] = false;
         }
-        if (!isset($_SESSION['displaydata']["budget"]["displaybudget"])) {
-            $_SESSION['displaydata']["budget"]["displaybudget"] = false;
+        if (!isset($_SESSION['displaydata']["budget"]["displaygrid"])) {
+            $_SESSION['displaydata']["budget"]["displaygrid"] = false;
         }
         if (!isset($_SESSION['displaydata']["budget"]["click"])) {
             $_SESSION['displaydata']["budget"]["click"] = false;
         }
-        if (!isset($_SESSION['displaydata']["notes"]["displaynotes"])) {
-            $_SESSION['displaydata']["notes"]["displaynotes"] = false;
+        if (!isset($_SESSION['displaydata']["program"]["note"])) {
+            $_SESSION['displaydata']["program"]["note"] = false;
         }
         if (!isset($_SESSION['displaydata']["refreshments"]["click"])) {
             $_SESSION['displaydata']["refreshments"]["click"] = false;
@@ -137,7 +116,7 @@ tinymce.init({
         $checknotes->checknotes();
         if ($_POST['programsave'] === (string) 'Save') 
         {
-            $program->updaterecord($_SESSION["program"]['programid'], $_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['birthdate'], $_POST['mobilityplusid']);
+            $program->updaterecord($_SESSION["program"]['programid'], $_SESSION["program"]["name"],$_SESSION["program"]["status"],$_SESSION["program"]["department"],   $_SESSION["program"]["description"]);
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"] = 0;
         }
         if ($_POST['programdelete'] == 'Delete')
@@ -149,29 +128,35 @@ tinymce.init({
         {
             if ($_POST['selectedprogram'] == '0') {
                 $msg->DisplayMessage('selectprogram');
-                $_SESSION['displaydata']["programlocation"]["displayprogramlocation"] = false;
+                $_SESSION['displaydata']["program"]["displayprogramnamedept"] = false;
                 $_SESSION['displaydata']["programobjective"]["displayprogramobjective"] = false;
-                $_SESSION['displaydata']["programresponsible"]["displayprogramresponsible"] = false;
+                $_SESSION['displaydata']["programobjective"]["displayprogrammeasure"] = false;
+                $_SESSION['displaydata']["programlocation"]["displaygrid"] = false;
+                $_SESSION['displaydata']["programresponsible"]["displaygrid"] = false;
+                $_SESSION['displaydata']["programequipsupply"]["displaygrid"] = false;
                 $_SESSION['displaydata']["setup"]["displaysetup"] = false;
-                $_SESSION['displaydata']["equipsupply"]["displayequipsupply"] = false;
+                $_SESSION['displaydata']["refreshments"]["displaygrid"] = false;
                 $_SESSION['displaydata']["servicecode"]["displayservicecode"] = false;
-                $_SESSION['displaydata']["budget"]["displaybudget"] = false;
-                $_SESSION['displaydata']["refreshments"]["displayrefreshments"] = false;
+                $_SESSION['displaydata']["budget"]["displaygrid"] = false;
                 $_SESSION["displaydata"]['program']["newprogram"] = false;
-            }
+                $_SESSION['displaydata']["program"]["note"] = false;            }
             if ($_POST['selectedprogram'] == -99) 
             {
-                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"] = true;
-                $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["newprogram"] = true;
-                $_SESSION['displaydata']["programlocation"]["displayprogramlocation"] = true;
+                $_SESSION['displaydata']["program"]["displayprogramnamedept"] = true;
+                $_SESSION['displaydata']["program"]["displayprogramrecurrence"] = true;
+             $_SESSION['displaydata']["program"]["displayprogramnote"] = true;
+               $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"] = true;
+                $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]["newprogram"] = true;
+                $_SESSION['displaydata']["programlocation"]["displaygrid"] = true;
                 $_SESSION['displaydata']["programobjective"]["displayprogramobjective"] = true;
-                $_SESSION['displaydata']["programresponsible"]["displayprogramresponsible"] = true;
+                $_SESSION['displaydata']["programresponsible"]["displaygrid"] = true;
                 $_SESSION['displaydata']["setup"]["displaysetup"] = true;
-                $_SESSION['displaydata']["equipsupply"]["displayequipsupply"] = true;
+                $_SESSION['displaydata']["equipsupply"]["displaygrid"] = true;
                 $_SESSION['displaydata']["servicecode"]["displayservicecode"] = true;
-                $_SESSION['displaydata']["budget"]["displaybudget"] = true;
-                $_SESSION['displaydata']["refreshments"]["displayrefreshments"] = true;
+                $_SESSION['displaydata']["budget"]["displaygrid"] = true;
+                $_SESSION['displaydata']["refreshnents"]["displaygrid"] = true;
                 $_SESSION["displaydata"]['program']["newprogram"] = true;
+                $_SESSION['displaydata']["program"]["note"]= true;
             }
             if ($_POST['selectedprogram'] > 0) {
                 $_SESSION["program"]['programid'] = $_POST['selectedprogram'];
@@ -179,20 +164,22 @@ tinymce.init({
                     $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["default"] = $_POST['selectedprogram'];
                    }
                 $tblprogram = $program->getrecord($_SESSION["program"]['programid']);
-                $_SESSION['program']['firstname'] = $tblprogram['firstname'];
-                $_SESSION['program']['lastname'] = $tblprogram['lastname'];
-                $_SESSION['program']['fullname'] = $tblprogram['fullname'];
-                $_SESSION['program']['gender'] = $tblprogram['gender'];
-                $_SESSION['program']['birthdate'] = $tblprogram['birthdate'];
-                $_SESSION['program']['mobilityplusid'] = $tblprogram['mobilityplusid'];
-                $_SESSION['displaydata']["programlocation"]["displayprogramlocation"] = true;
+                $_SESSION['program']['name'] = $tblprogram['name'];
+                $_SESSION['program']['department'] = $tblprogram['department'];
+                $_SESSION['program']['description'] = $tblprogram['description'];
+                $_SESSION['program']['status'] = $tblprogram['status'];
+                $_SESSION['displaydata']["program"]["displayprogramnamedept"] = true;
+                $_SESSION['displaydata']["program"]["displayprogramrecurrence"] = true;
+                $_SESSION['displaydata']["program"]["displayprogramnote"] = true;
+                $_SESSION['displaydata']["programlocation"]["displaygrid"] = true;
                 $_SESSION['displaydata']["programobjective"]["displayprogramobjective"] = true;
-                $_SESSION['displaydata']["programresponsible"]["displayprogramresponsible"] = true;
+                $_SESSION['displaydata']["programresponsible"]["displaygrid"] = true;
                 $_SESSION['displaydata']["setup"]["displaysetup"] = true;
-                $_SESSION['displaydata']["equipsupply"]["displayequipsupply"] = true;
+                $_SESSION['displaydata']["equipsupply"]["displaygrid"] = true;
                 $_SESSION['displaydata']["servicecode"]["displayservicecode"] = true;
-                $_SESSION['displaydata']["budget"]["displaybudget"] = true;
-                $_SESSION['displaydata']["refreshments"]["displayrefreshments"] = true;
+                $_SESSION['displaydata']["budget"]["displaygrid"] = true;
+                $_SESSION['displaydata']["refreshments"]["displaygrid"] = true;
+                $_SESSION['displaydata']["program"]["note"] = true;
                 $_SESSION['displaydata'][$_SESSION ["displaydata"]["name"]]["default"] = $_POST['selectedprogram'];
             }
         }
@@ -219,67 +206,20 @@ tinymce.init({
         if ($_SESSION["displaydata"]["equipsupply"]["click"]) {
             $_SESSION["displaydata"]["equipsupply"]["DisplayData"] = true;
         }
-// Load the displaydata class  - programlocation
-        $programlocation = new DisplayData($db);
-        $programlocation->setdisplaydata('programlocation');
-        $programlocation->SetTemplate('displaygrid', $db);
-// Set the query, select all rows from the people table
-        $programlocation->setQuery("programid,organizationid,location", "location", "", "programid = " . $_SESSION['program']['programid']);
-        $programlocation->setPrimaryID('programlocationid');
-        $programlocation->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
-        $programlocation->setURLConstant("inputprogram.php");
-        $programlocation->setOrder('programid');
-
-// Hide ID field
-        $programlocation->hidefield('programid');
-// Show reset grid control
-        $programlocation->showReset();
-
-// setting inline edit
-        $programlocation->SetInLineEdit(true);
-// Add standard control
-        $programlocation->addStandardControl(displaydata::STDCTRL_INLINEEDIT, "inputprogram.php", displaydata::TYPE_PHPFUNCTION);
-// Add create control
-        $programlocation->showCreateButton("inputprogram.php", displaydata::TYPE_INLINEADDRECORD, 'New');
-
-// Show checkboxes
-// Show row numbers
-        $programlocation->showRowNumber(true);
-
-// Change the amount of results per page
-        $programlocation->setResultsPerPage(2);
-
-// Change headers text
-        $programlocation->SetFieldHeader('programid', '' . 'Person Id:');
-        $programlocation->SetFieldHeader('organizationid', '' . 'Organization Id:');
-        $programlocation->SetFieldHeader('programlocation', '' . 'Location:');
-//  set field type
-        $programlocation->SetFieldType('programid', displaydata::TYPE_FIELD, array('table' => 'program', 'displayfield' => 'fullname', 'inputfield' => 'programid'));
-        $programlocation->SetFieldType('organizationid', displaydata::TYPE_FIELD, array('table' => 'organization', 'displayfield' => 'name', 'inputfield' => 'organizationid'));
-        $programlocation->SetFieldType('programlocation', displaydata::TYPE_CODEDISPLAY, array('table' => 'programlocation', 'field' => 'programlocation', 'class' => 'body'));
-        $programlocation->SetFieldType('notes', displaydata::TYPE_NOTE, array('name' => 'programlocationnotes', 'class' => 'subtitle', 'text' => 'Display Relationship Notes', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes', 'returnurl' => "inputprogram.php", 'notestype' => 'persrel'));
-//  set inlineedit field type
-        $programlocation->SetInlineFieldType('programid', displaydata::INLINE_COMBOBOX, array('name' => "programid", "table" => "program", "where" => "" . $_SESSION["program"]["programid"], 'order_by' => 'fullname', 'asc' => 'ASC', 'value' => 'programid', 'display' => 'fullname', 'class' => 'body', 'pleaseselect' => false, 'commonelements' => array(), 'default' => "", 'noinput' => false, 'AllowNew' => false, 'newname' => '', 'new' => false, 'size' => '30')); // program
-        $programlocation->SetInlineFieldType('organizationid', displaydata::INLINE_COMBOBOX, array('name' => "organizationid", "table" => "organization", "where" => "", 'order_by' => 'name', 'asc' => 'ASC', 'value' => 'organizationid', 'display' => 'name', 'class' => 'body', 'pleaseselect' => false, 'commonelements' => array(), 'default' => "", 'noinput' => false, 'AllowNew' => false, 'newname' => '', 'new' => false, 'size' => '30')); // organization
-        $programlocation->SetInlineFieldType('programlocation', displaydata::INLINE_CODECOMBO, array('name' => 'programlocation', 'table' => 'programlocation', 'field' => 'programlocation', 'class' => 'body')); // programlocation
-        $programlocation->SetInlineFieldType('notes', displaydata::INLINE_NOTE, array('name' => 'programlocationnotes', 'class' => 'subtitle', 'text' => 'Add Relationship Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnote.php', 'rerurnurl' => "inputprogram.php", 'notestype' => 'persrel'));
-
-// Stop ordering
-        $programlocation->hideOrder(false);
-
 // Load the database adapter -programobjective
 // Load the displaydata class
         $programobjective = new DisplayData($db);
         $programobjective->setdisplaydata('programobjective');
         $programobjective->SetTemplate('displayprogramobjective', $db);
 // Set the query, select all rows from the people table
-        $programobjective->setQuery("programobjective", "programobjective", "", "programid = " . $_SESSION['program']["programid"]);
+        $programobjective->setQuery("programobjectiveid,programid,programobjective", "programobjective", "", "programid = " . $_SESSION['program']["programid"]);
         $programobjective->setPrimaryID('programobjectiveid');
         $programobjective->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
         $programobjective->setURLConstant("inputprogram.php");
         $programobjective->setOrder('programid');
 
 // Hide ID field
+        $programobjective->hidefield('programobjectiveid');
         $programobjective->hidefield('programid');
 // Show reset grid control
         $programobjective->showReset();
@@ -300,17 +240,70 @@ tinymce.init({
 // Change headers text
         $programobjective->SetFieldHeader('programobjective', 'Program Objective:');
 //  set field type
-        $programobjective->SetFieldType('programobjective', displaydata::TYPE_CODEDISPLAY, array('table' => 'programobjective', 'field' => 'programobjective', 'class' => 'body'));
+        $programobjective->SetFieldType('programobjective', displaydata::TYPE_TEXTBOX, array('table' => 'programobjective','class' => 'body','col'=>25,'row'=>3));
 //  set inlineedit field type
-        $programobjective->SetInlineFieldType('programobjective', displaydata::INLINE_CODECOMBO, array('name' => 'programobjective', 'table' => 'programobjective', 'where' => 'programid = "' . $_SESSION['program']['programid'], 'field' => 'programobjective', 'class' => 'body')); // programobjective
+        $programobjective->SetInlineFieldType('programobjective', displaydata::INLINE_TEXTBOX, array('name' => 'programobjective', 'class' => 'body','col'=>25,'row'=>3)); // programobjective
 // Stop ordering
         $programobjective->hideOrder(false);
+// Load the displaydata class  - programlocation
+        $programlocation = new DisplayData($db);
+        $programlocation->setdisplaydata('programlocation');
+        $programlocation->SetTemplate('displayprogramlocation', $db);
+// Set the query, select all rows from the people table
+        $programlocation->setQuery("programlocationid,programlocation", "programlocation", "", "programid = " . $_SESSION['program']['programid']);
+        $programlocation->setPrimaryID('programlocationid');
+        $programlocation->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
+        $programlocation->setURLConstant("inputprogram.php");
+        $programlocation->setOrder('programid');
+
+// Hide ID field
+        $programlocation->hidefield('programid');
+        $programlocation->hidefield('programobjectiveid');
+// Show reset grid control
+        $programlocation->showReset();
+
+// setting inline edit
+        $programlocation->SetInLineEdit(true);
+// Add standard control
+        $programlocation->addStandardControl(displaydata::STDCTRL_INLINEEDIT, "inputprogram.php", displaydata::TYPE_PHPFUNCTION);
+// Add create control
+        $programlocation->showCreateButton("inputprogram.php", displaydata::TYPE_INLINEADDRECORD, 'New');
+
+// Show checkboxes
+// Show row numbers
+        $programlocation->showRowNumber(true);
+
+// Change the amount of results per page
+        $programlocation->setResultsPerPage(2);
+
+// Change headers text
+        $programlocation->SetFieldHeader('type', '' . 'Type:');
+        $programlocation->SetFieldHeader('address1', '' . 'Address 1:');
+        $programlocation->SetFieldHeader('address2', '' . 'Address 2:');
+        $programlocation->SetFieldHeader('city', '' . 'City:');
+        $programlocation->SetFieldHeader('prov', '' . 'Province:');
+        $programlocation->SetFieldHeader('postalcode', '' . 'Postal Code:');
+//  set field type
+        $programlocation->SetFieldType('type', displaydata::TYPE_CODEDISPLAY, array('table' => 'address', 'field' => 'type', 'class' => 'body'));
+        $programlocation->SetFieldType('address1', displaydata::TYPE_TEXT);
+        $programlocation->SetFieldType('address2', displaydata::TYPE_TEXT);
+        $programlocation->SetFieldType('city', displaydata::TYPE_TEXT);
+        $programlocation->SetFieldType('prov', displaydata::TYPE_TEXT);
+        $programlocation->SetFieldType('postalcode', displaydata::TYPE_TEXT);
+        $programlocation->SetFieldType('organizationid', displaydata::TYPE_FIELD, array('table' => 'organization', 'displayfield' => 'name', 'inputfield' => 'organizationid'));
+        $programlocation->SetFieldType('programlocation', displaydata::TYPE_CODEDISPLAY, array('table' => 'programlocation', 'field' => 'programlocation', 'class' => 'body'));
+//  set inlineedit field type
+        $programlocation->SetInlineFieldType('organizationid', displaydata::INLINE_COMBOBOX, array('name' => "organizationid", "table" => "organization", "where" => "", 'order_by' => 'name', 'asc' => 'ASC', 'value' => 'organizationid', 'display' => 'name', 'class' => 'body', 'pleaseselect' => false, 'commonelements' => array(), 'default' => "", 'noinput' => false, 'AllowNew' => false, 'newname' => '', 'new' => false, 'size' => '30')); // organization
+
+// Stop ordering
+        $programlocation->hideOrder(false);
+
 // Load the displaydata class  - programresponsible
         $programresponsible = new DisplayData($db);
         $programresponsible->setdisplaydata('programresponsible');
-        $programresponsible->SetTemplate('displayprogramresponsible', $db);
+        $programresponsible->SetTemplate('displaygrid', $db);
 // Set the query, select all rows from the people table
-        $programresponsible->setQuery("personid", "programresponsible", "", "programid = " . $_SESSION['program']['programid']);
+        $programresponsible->setQuery("programid,personid", "programresponsible", "", "programid = " . $_SESSION['program']['programid']);
         $programresponsible->setPrimaryID('programresponsibleid');
         $programresponsible->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
         $programresponsible->setURLConstant("inputprogram.php");
@@ -338,26 +331,24 @@ tinymce.init({
 // Change headers text
         $programresponsible->SetFieldHeader('programresponsible', '' . 'Person Responsible:');
 //  set field type
-        $programresponsible->SetFieldType('programresponsible', displaydata::TYPE_CODEDISPLAY, array('table' => 'programresponsible', 'field' => "personid", 'class' => 'body'));
-        $programresponsible->SetFieldType('expirydate', displaydata::TYPE_DATE, array('format' => $_SESSION['preferences']['dateformat'], 'value' => 'expirydate', 'class' => 'body'));
+        $programresponsible->SetFieldType('programresponsible', displaydata::TYPE_TEXTBOX, array('name' => 'programresponsible', 'field' => "personid", 'class' => 'body','col'=>25,'row'=>3));
 //  set inlineedit field type
-        $programresponsible->SetInlineFieldType('programresponsible', displaydata::INLINE_CODECOMBO, array('name' => 'programresponsible', 'table' => 'programresponsible', 'field' => 'programresponsible', 'class' => 'body')); // programresponsible
-        $programresponsible->SetInlineFieldType('expirydate', displaydata::INLINE_DATECOMBO, array('name' => 'expirydate', 'classtext' => 'body', 'classctl' => 'subtitle', 'text' => '', 'defaultdate' => 'expirydate')); // expirydate
+        $programresponsible->SetInlineFieldType('programresponsible', displaydata::INLINE_TEXTBOX, array('name' => 'programresponsible', 'class' => 'body','col'=>25,'row'=>3)); // programresponsible
 // Stop ordering
         $programresponsible->hideOrder(false);
 // Load the displaydata class  - setup
         $setup = new DisplayData($db);
         $setup->setdisplaydata('setup');
-        $setup->SetTemplate('displaysetup', $db);
+        $setup->SetTemplate('displaygrid', $db);
 // Set the query, select all rows from the people table
-        $setup->setQuery("setup", "setup", "", "programid = " . $_SESSION['program']["programid"]);
-        $setup->setPrimaryID('setupid');
+        $setup->setQuery("programsetupid,programid,setup", "programsetup", "", "programid = " . $_SESSION['program']["programid"]);
+        $setup->setPrimaryID('programsetupid');
         $setup->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
         $setup->setURLConstant("inputprogram.php");
-        $setup->setOrder('programid');
+        $setup->setOrder('programsetupid');
 
 // Hide ID field
-        $setup->hidefield('programid');
+        $setup->hidefield('programsetupid','programid');
 // Show reset grid control
         $setup->showReset();
 
@@ -375,22 +366,20 @@ tinymce.init({
         $setup->setResultsPerPage(2);
 
 // Change headers text
-        $setup->SetFieldHeader('setup', 'Setup.Special Adaptations:');
+        $setup->SetFieldHeader('setup', 'Setup/Special Adaptations:');
 //  set field type
-        $setup->SetFieldType('setup', displaydata::TYPE_CODEDISPLAY, array('table' => 'setup', 'field' => 'setup', 'class' => 'body'));
-        $setup->SetFieldType('notes', displaydata::TYPE_NOTE, array('name' => 'setupnotes', 'class' => 'subtitle', 'text' => 'Display Mobility Aid Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'notestype' => 'persmob'));
+        $setup->SetFieldType('setup', displaydata::TYPE_TEXTBOX, array('name' => 'setup','class' => 'body','col'=>25,'row'=>3));
 //  set inlineedit field type
-        $setup->SetInlineFieldType('setup', displaydata::INLINE_CODECOMBO, array('name' => 'setup', 'table' => 'setup', 'field' => 'setup', 'class' => 'body')); // setup
-        $setup->SetInlineFieldType('notes', displaydata::INLINE_NOTE, array('name' => 'setupnotes', 'class' => 'subtitle', 'text' => 'Add Mobility Aid Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'notestype' => 'persmob'));
+        $setup->SetInlineFieldType('setup', displaydata::INLINE_TEXTBOX, array('name' => 'setup','class' => 'body','col'=>25,'row'=>3)); // setup
 
 // Stop ordering
         $setup->hideOrder(false);
 // Load the displaydata class  - equipsupply
         $equipsupply = new DisplayData($db);
         $equipsupply->setdisplaydata('equipsupply');
-        $equipsupply->SetTemplate('displayegrid', $db);
+        $equipsupply->SetTemplate('displaygrid', $db);
 // Set the query, select all rows from the people table
-        $equipsupply->setQuery("type,equipsupply1,equipsupply2,city,prov,postalcode", "equipsupply", "", "programid =" . $_SESSION['program']["programid"]);
+        $equipsupply->setQuery("programid,equipsupply", "equipsupply", "", "programid =" . $_SESSION['program']["programid"]);
         $equipsupply->setPrimaryID('equipsupplyid');
         $equipsupply->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
         $equipsupply->setURLConstant("inputprogram.php");
@@ -416,28 +405,9 @@ tinymce.init({
         $equipsupply->setResultsPerPage(2);
 
 // Change headers text
-        $equipsupply->SetFieldHeader('type', '' . 'Type:');
-        $equipsupply->SetFieldHeader('equipsupply1', '' . 'Address 1:');
-        $equipsupply->SetFieldHeader('equipsupply2', '' . 'Address 2:');
-        $equipsupply->SetFieldHeader('city', '' . 'City:');
-        $equipsupply->SetFieldHeader('prov', '' . 'Province:');
-        $equipsupply->SetFieldHeader('postalcode', '' . 'Postal Code:');
-//  set field type
-        $equipsupply->SetFieldType('type', displaydata::TYPE_CODEDISPLAY, array('table' => 'equipsupply', 'field' => 'type', 'class' => 'body'));
-        $equipsupply->SetFieldType('equipsupply1', displaydata::TYPE_TEXT);
-        $equipsupply->SetFieldType('equipsupply2', displaydata::TYPE_TEXT);
-        $equipsupply->SetFieldType('city', displaydata::TYPE_TEXT);
-        $equipsupply->SetFieldType('prov', displaydata::TYPE_TEXT);
-        $equipsupply->SetFieldType('postalcode', displaydata::TYPE_TEXT);
-        $equipsupply->SetFieldType('notes', displaydata::TYPE_NOTE, array('name' => 'equipsupplynotes', 'class' => 'subtitle', 'text' => 'Display Address Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'notestype' => 'persaddr'));
-//  set inlineedit field type
-        $equipsupply->SetInlineFieldType('type', displaydata::INLINE_CODECOMBO, array('name' => 'type', 'table' => 'equipsupply', 'field' => 'type', 'class' => 'body')); // equipsupply type
-        $equipsupply->SetInlineFieldType('equipsupply1', displaydata::INLINE_TEXT, array('name' => 'equipsupply1', 'size' => 30, 'class' => 'body')); // equipsupply1
-        $equipsupply->SetInlineFieldType('equipsupply2', displaydata::INLINE_TEXT, array('name' => 'equipsupply2', 'size' => 30, 'class' => 'body')); // equipsupply2
-        $equipsupply->SetInlineFieldType('city', displaydata::INLINE_TEXT, array('name' => 'city', 'size' => 15, 'class' => 'body')); // city
-        $equipsupply->SetInlineFieldType('prov', displaydata::INLINE_TEXT, array('name' => 'prov', 'size' => 8, 'class' => 'body')); // provence
-        $equipsupply->SetInlineFieldType('postalcode', displaydata::INLINE_POSTALCODE, array('name' => 'postalcode', 'size' => 7, 'class' => 'body')); // postalcode
-        $equipsupply->SetInlineFieldType('notes', displaydata::INLINE_NOTE, array('name' => 'equipsupplynotes', 'class' => 'subtitle', 'text' => 'Add Address Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputprogram.php', 'notestype' => 'persaddr'));
+        $equipsupply->SetFieldHeader('equipsupply', '' . 'Equipment Supplies');
+        $equipsupply->SetFieldType('equipsupply2', displaydata::TYPE_TEXTBOX, array('name' => 'equipsupply','class' => 'body','col'=>25,'row'=>3));
+        $equipsupply->SetInlineFieldType('equipsupply1', displaydata::INLINE_TEXTBOX, array('name' => 'equipsupply','class' => 'body','col'=>25,'row'=>3)); // equipsupply
 
 // Stop ordering
         $equipsupply->hideOrder(false);
@@ -446,7 +416,7 @@ tinymce.init({
         $servicecode->setdisplaydata('servicecode');
         $servicecode->SetTemplate('displayservicecode', $db);
 // Set the query, select all rows from the people table
-        $servicecode->setQuery("servicecodetype,servicecodenumber", "servicecode", "", "programid = " . $_SESSION['program']["programid"]);
+        $servicecode->setQuery("programid,servicecode", "servicecode", "", "programid = " . $_SESSION['program']["programid"]);
         $servicecode->setPrimaryID('servicecodeid');
         $servicecode->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
         $servicecode->setURLConstant("inputprogram.php");
@@ -471,25 +441,20 @@ tinymce.init({
         $servicecode->setResultsPerPage(2);
 
 // Change headers text
-        $servicecode->SetFieldHeader('servicecodetype', 'Telephone Type:');
-        $servicecode->SetFieldHeader('servicecodenumber', 'Telephone Number:');
+        $servicecode->SetFieldHeader('servicecode', 'Servicecode:');
 //  set field type
-        $servicecode->SetFieldType('servicecodetype', displaydata::TYPE_CODEDISPLAY, array('table' => 'servicecode', 'field' => 'servicecodetype', 'class' => 'body'));
-        $servicecode->SetFieldType('servicecodenumber', displaydata::TYPE_TELEPHONE, array('table' => 'servicecode', 'field' => 'servicecodenumber', 'size' => 10, 'class' => 'body'));
-        $servicecode->SetFieldType('notes', displaydata::TYPE_NOTE, array('name' => 'servicecodenotes', 'class' => 'subtitle', 'text' => 'Display Telephone Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputprogram', 'notestype' => 'perstel'));
+        $servicecode->SetFieldType('servicecodetype', displaydata::TYPE_TEXT, array('table' => 'servicecode', 'field' => 'servicecodetype', 'class' => 'body'));
 //  set inlineedit field type
         $servicecode->SetInlineFieldType('servicecodetype', displaydata::INLINE_CODECOMBO, array('name' => 'servicecodetype', 'table' => 'servicecode', 'field' => 'servicecodetype', 'class' => 'body')); // servicecodetype
-        $servicecode->SetInlineFieldType('servicecodenumber', displaydata::INLINE_TELEPHONE, array('name' => 'servicecodenumber', 'table' => 'servicecode', 'field' => 'servicecodenumber', 'class' => 'body', 'size' => 10)); // servicecodenumber
-        $servicecode->SetInlineFieldType('notes', displaydata::INLINE_NOTE, array('name' => 'servicecodenotes', 'class' => 'subtitle', 'text' => 'Add Telephone Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputprogram.php', 'notestype' => 'perstel'));
 
 // Stop ordering
         $servicecode->hideOrder(false);
 // Load the displaydata class  - budget
         $budget = new DisplayData($db);
         $budget->setdisplaydata('budget');
-        $budget->SetTemplate('displaybudget', $db);
+        $budget->SetTemplate('displaygrid', $db);
 // Set the query, select all rows from the people table
-        $budget->setQuery("emailtype,email", "email", "", "programid = " . $_SESSION['program']["programid"]);
+        $budget->setQuery("programid,item,amount", "programbudget", "", "programid = " . $_SESSION['program']["programid"]);
         $budget->setPrimaryID('budgetid');
         $budget->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
         $budget->setURLConstant("inputprogram.php");
@@ -514,15 +479,14 @@ tinymce.init({
         $budget->setResultsPerPage(2);
 
 // Change headers text
-        $budget->SetFieldHeader('emailtype', 'Email Type:');
+        $budget->SetFieldHeader('item', 'Item');
+        $budget->SetFieldHeader('amount', 'Amount');
 //  set field type
-        $budget->SetFieldType('emailtype', displaydata::TYPE_CODEDISPLAY, array('table' => 'budget', 'field' => 'emailtype', 'class' => 'body'));
-        $budget->SetFieldType('email', displaydata::TYPE_EMAIL, array('table' => 'budget', 'field' => 'email', 'class' => 'body', 'size' => 20));
-        $budget->SetFieldType('notes', displaydata::TYPE_NOTE, array('name' => 'budgetnotes', 'class' => 'subtitle', 'text' => 'Display Email Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputprogram.php', 'notestype' => 'persemail'));
+        $budget->SetFieldType('item', displaydata::TYPE_FIELD, array('table' => 'programbudget', 'displayfield' => 'item', 'inputfield' => 'item'));
+        $budget->SetFieldType('amount', displaydata::TYPE_FIELD, array('table' => 'programbudget', 'displayfield' => 'amount', 'inputfield' => 'amount'));
 //  set inlineedit field type
-        $budget->SetInlineFieldType('emailtype', displaydata::INLINE_CODECOMBO, array('name' => 'budgettype', 'table' => 'budget', 'field' => 'budgettype', 'class' => 'body')); // budget type
-        $budget->SetInlineFieldType('email', displaydata::INLINE_EMAIL, array('name' => 'budget', 'table' => 'budget', 'field' => 'email', 'class' => 'body', 'size' => 20)); // budget 
-        $budget->SetInlineFieldType('notes', displaydata::INLINE_NOTE, array('name' => 'emailnotes', 'class' => 'subtitle', 'text' => 'Add Email Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputprogram.php', 'notedtype' => 'persemail'));
+        $budget->SetInlineFieldType('item', displaydata::INLINE_COMBOBOX, array('name' => "item", "table" => "organization", "where" => "" . $_SESSION["program"]["programid"], 'order_by' => 'item', 'asc' => 'ASC', 'value' => 'item', 'display' => 'item', 'class' => 'body', 'pleaseselect' => true, 'commonelements' => array(), 'default' => "item", 'noinput' => false, 'AllowNew' => true, 'newname' => 'item', 'new' => 'item', 'size' => '20')); // budget item
+        $budget->SetInlineFieldType('amount', displaydata::INLINE_TEXT, array('name' => 'amount', 'class' => 'body', 'size' => 20)); // budget amount
 
 // Stop ordering
         $budget->hideOrder(false);
@@ -531,7 +495,7 @@ tinymce.init({
         $refreshments->setdisplaydata('refreshments');
         $refreshments->SetTemplate('Displaygrid', $db);
 // Set the query, select all rows from the people table
-        $refreshments->setQuery("refreshments", "refreshments", "", "");
+        $refreshments->setQuery("programid,refreshments", "refreshments", "", "programid = " . $_SESSION['program']["programid"]);
         $refreshments->setPrimaryID('refreshmentsid');
         $refreshments->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
         $refreshments->setURLConstant("inputprogram.php");
@@ -556,11 +520,46 @@ tinymce.init({
         $refreshments->setResultsPerPage(2);
 
 // Change headers text
-        $refreshments->SetFieldHeader('refreshments', 'Notes:');
+        $refreshments->SetFieldHeader('refreshments', 'Refreshments:');
 //  set field type
-        $refreshments->SetFieldType('refreshments', displaydata::TYPE_NOTE, array('name' => 'programrefreshments', 'class' => 'subtitle', 'text' => 'Display Person Note', 'size' => 15, 'outbaseurl' => 'outputrefreshments.php', 'inbaseurl' => 'inputrefreshments.php', 'returnurl' => 'inputprogram.php', 'refreshmentstype' => 'per'));
-        $refreshments->SetInlineFieldType('refreshments', displaydata::INLINE_NOTE, array('name' => 'programrefreshments', 'class' => 'subtitle', 'text' => 'Add Person Note', 'size' => 15, 'outbaseurl' => 'outputrefreshments.php', 'inbaseurl' => 'inputrefreshments.php', 'returnurl' => 'inputprogram.php', 'refreshmentstype' => 'per'));
+        $refreshments->SetFieldType('refreshments', displaydata::TYPE_TEXTBOX, array('name' => 'programrefreshments', 'class' => 'body','col'=>25,'row'=>3));
+        $refreshments->SetInlineFieldType('refreshments', displaydata::INLINE_TEXTBOX, array('name' => 'programrefreshments', 'class' => 'body','col'=>25,'row'=>3));
         $refreshments->hideOrder(false);
+// Load the displaydata class  - note
+        $notes = new DisplayData($db);
+        $notes->setdisplaydata('notes');
+        $notes->SetTemplate('Displaynotes', $db);
+// Set the query, select all rows from the people table
+        $notes->setQuery("notesid,notes", "notes", "", "");
+        $notes->setPrimaryID('notesid');
+        $notes->setConstantFields(array("programid" => $_SESSION["program"]['programid']));
+        $notes->setURLConstant("inputprogram.php");
+        $notes->setOrder('notesid');
+
+// Hide ID field
+        $notes->hidefield('notesid', 'personid');
+// Show reset grid control
+        $notes->showReset();
+
+// setting inline edit
+        $notes->SetInLineEdit(true);
+// Add standard control
+        $notes->addStandardControl(displaydata::STDCTRL_INLINEEDIT, "inputprogram.php", displaydata::TYPE_PHPFUNCTION);
+// Add create control
+        $notes->showCreateButton("inputperson.php", displaydata::TYPE_INLINEADDRECORD, 'New');
+
+// Show checkboxes
+// Show row numbers
+        $notes->showRowNumber(true);
+// Change the amount of results per page
+        $notes->setResultsPerPage(2);
+
+// Change headers text
+        $notes->SetFieldHeader('notes', 'Notes:');
+//  set field type
+        $notes->SetFieldType('notes', displaydata::TYPE_NOTE, array('name' => 'personnotes', 'class' => 'subtitle', 'text' => 'Display Person Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputperson.php', 'notestype' => 'per'));
+        $notes->SetInlineFieldType('notes', displaydata::INLINE_NOTE, array('name' => 'personnotes', 'class' => 'subtitle', 'text' => 'Add Person Note', 'size' => 15, 'outbaseurl' => 'outputnotes.php', 'inbaseurl' => 'inputnotes.php', 'returnurl' => 'inputperson.php', 'notestype' => 'per'));
+        $notes->hideOrder(false);
         if (!isset($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["programnew"]))
             $_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["programnew"] = false;
         if (!isset($_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"]))
@@ -575,7 +574,7 @@ tinymce.init({
     </HEAD>
     <BODY>
         <?PHP
-        $pref->header('Input Person');
+        $pref->header('Input Program Profile');
         ?>
         <table class="tbl" width="100%">
             <tr>
@@ -598,30 +597,47 @@ tinymce.init({
                 </td>
             </tr>
         </table> 
+        <?PHP
+            if ($_SESSION['displaydata']["program"]["displayprogramnamedept"]) 
+            {
+        ?>
         <form id="enterprogram" name="enterprogram"  action="inputprogram.php" method="post" enctype="multipart/form-data" >
-            <table class="tbl" width="100%">
-                <tr>
-                    <td class ='subtitle'>Program Name&nbsp:
-                    <?PHP
-                    echo'<input name="name" class="body" type="text" size=40 value="' . $_SESSION["program"]["name"] . '">';
-                    ?>        
-                    </td>
-                    <td class="subtitle">Department&nbsp:
+                <table class="tbl" width="100%">
+                    <tr>
+                        <td class="subtitle">Program Name:
+                            <input name="name" class="body" type="text" size=40 value="<?PHP echo $_SESSION['program']['name']?>">
+                       </td>
+                   </tr>
+                    <tr> 
+                        <td class="subtitle">Department:
+                            
                         <?PHP
-                            echo $validate->CodeCombo("department", "program", "department", "body", $_SESSION["program"]["department"]);
-                        ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class ='subtitle'>Program Description&nbsp;:</td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea id='description' name="description" class ='body' rows="5" cols="45"><?php echo $_SESSION['organization']['description']; ?></textarea>
-                    </td>
-                 </tr>
-            </table>
-            <table class="tbl" width="100%">
+                            echo $validate->CodeCombo("department", "program", "department", "body",$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"], $_SESSION["program"]["department"]);
+                       ?>
+                        </td>
+                   </tr>
+                   <tr>
+                        <td class="subtitle">Status:
+                        <?PHP
+                            echo $validate->CodeCombo("status", "program", "status", "body",$_SESSION['displaydata'][$_SESSION ["displaydata"] ["name"]]["pleaseselect"], $_SESSION["program"]["status"]);
+                        ?>    
+                        </td>
+                   </tr>
+                   <tr>
+                        <td class ="subtitle" colspan="2">Program Description:
+                        </td>
+                   </tr>
+                   <tr>
+                        <td>
+                             <textarea id="description" name="description" class ="body" rows="5" cols="45"><?PHP echo$_SESSION['program']['description']?>                                   </textarea>
+                        </td>
+                    </tr>
+                </table>
+             </form>
+          <?PHP
+          }
+          ?>     
+          <table class="tbl" width="100%">
                 <tr>
                     <td colspan="2">
                         <?PHP
@@ -640,7 +656,7 @@ tinymce.init({
                     <td>  
                         <table class="tbl" width="100%">
                         <?PHP
-                        if ($_SESSION['displaydata']["programlocation"]["displayprogramlocation"]) {
+                        if ($_SESSION['displaydata']["programlocation"]["displaygrid"]) {
                             echo '<tr>
                                         <td class ="subtitle">Location:</td>
                                     </tr>
@@ -673,7 +689,7 @@ tinymce.init({
                     <td valign="top">
                         <table class="tbl" width="100%">
                             <?PHP
-                            if ($_SESSION['displaydata']["programresponsible"]["displayprogramresponsible"]) {
+                            if ($_SESSION['displaydata']["programresponsible"]["displaygrid"]) {
                                 echo '<tr>
                                         <td class ="subtitle">Person Responsible:</td>
                                     </tr>
@@ -682,7 +698,7 @@ tinymce.init({
                                 $_SESSION ["displaydata"] ["name"] = 'programresponsible';
                                 $programresponsible->printdata();
                             }
-                            if ($_SESSION['displaydata']["setup"]["displaysetup"]) {
+                            if ($_SESSION['displaydata']["setup"]["displaygrid"]) {
                                 echo '<tr>
                                         <td class="subtitle">Setup/Special Adaptation:</td>
                                     </tr>
@@ -703,12 +719,13 @@ tinymce.init({
                             ?>
                         </table>
                     </td>
+                </tr>    
             </table>
             <table class="tbl" width="100%">
                <tr>            
                     <td>
                         <?PHP
-                            if ($_SESSION['displaydata']["budget"]["displaybudget"]) {
+                            if ($_SESSION['displaydata']["budget"]["displaygrid"]) {
                                 echo '<tr>
                                         <td class ="subtitle">Budget:</td>
                                     </tr>
@@ -720,13 +737,35 @@ tinymce.init({
                         ?>    
                 </td>
             </tr>
-            <tr>
-                <td class="title"  align="left">Recurrence Pattern</td>
-		<td width="100%" align="center">
-			<img src="Images/UnderConstruction.gif" alt="picture" name="pic" width="200" height="200" align="middle">
-		</td>
-	</tr>
+        <?PHP
+            if( $_SESSION['displaydata']["program"]["displayprogramrecurrence"])
+            {
+        
+                echo '<tr>'
+                      .  '<td class="title"  align="left">Recurrence Pattern
+                         </td>
+                         </tr>
+                         <tr> 
+                         <td width="100%" align="center">
+                                <img src="Images/UnderConstruction.gif" alt="picture" name="pic" width="200" height="200" align="middle">
+                        </td>
+                    </tr>';
+            }   
+            if ($_SESSION['displaydata']["program"]["note"]) 
+            {
+                    echo '<tr>
+                                <td class ="subtitle">Program Notes</td>
+                         </tr>
+                         <tr>
+                                <td>';
+                                     $_SESSION["displaydata"] ["name"] = 'notes';
+                                     $notes->printdata();
+             }
+                        ?>    
+                </td>
+            </tr>
         </table>
+         <form id="selectprogram" name="program"  action="inputprogram.php" method="post" enctype="multipart/form-data" >
             <table class="tbl" width="100%">
                <tr>            
                 <td>

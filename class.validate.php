@@ -1,8 +1,8 @@
 <script type="text/javascript" src="popup-window.js"></script>
 <?php
-
 require_once("class.pdodatabase.php");
 require_once("class.messages.php");
+
 class validate {
 
     var $idFrom = ''; // string ID related with the currency to be converted
@@ -116,8 +116,7 @@ class validate {
 
         $length = strlen($phone);
         // Perform phone number formatting here
-        switch ($length) 
-        {
+        switch ($length) {
             case 7:
                 // Format: xxx-xxxx
                 return preg_replace("/([0-9a-zA-Z]{3})([0-9a-zA-Z]{4})/", "$1-$2", $phone);
@@ -127,11 +126,10 @@ class validate {
             case 11:
                 // Format: x(xxx) xxx-xxxx
                 return preg_replace("/([0-9a-zA-Z]{1})([0-9a-zA-Z]{3})([0-9a-zA-Z]{3})([0-9a-zA-Z]{4})/", "$1($2) $3-$4", $phone);
-            case ($length >11):
-		if ($ext)
-    		{
-                    return preg_replace("/([0-9a-zA-Z]{3})([0-9a-zA-Z]{4})/", "$1-$2", $phone.' ext '.substr($numbers,10));
-                }else{
+            case ($length > 11):
+                if ($ext) {
+                    return preg_replace("/([0-9a-zA-Z]{3})([0-9a-zA-Z]{4})/", "$1-$2", $phone . ' ext ' . substr($numbers, 10));
+                } else {
                     return;
                 }
             default:
@@ -165,13 +163,17 @@ class validate {
         }
     }
 
-    function CodeCombo($name = "code",$table, $field, $class = "", $default = 0) {
+    function CodeCombo($name = "code", $table, $field, $class = "",$PleaseSelect = false, $default = 0)
+    {        
         $db = new DBMS($_SESSION["preferences"]["database"]["type"], $_SESSION["preferences"]["database"]['server'], $_SESSION["preferences"]["database"]["dbname"], $_SESSION["preferences"]["database"]["user"], $_SESSION["preferences"]["database"]["password"], $_SESSION["preferences"]["database"]["port"]);
         /* @var $table type */
         $sql = "SELECT code,title FROM codes WHERE tblname = \"" . $table . "\" and fldname = \"" . $field . "\" ORDER BY seqno";
         $result = $db->query($sql);
         $show_Combo_Box = ""
                 . "<SELECT name=\"" . $name . "\" class=\"" . $class . "\" > \n";
+        if ($PleaseSelect) {
+            $show_Combo_Box .="<OPTION value=\"0\"> Please Select</OPTION>\n";
+        }
         if ($result) {
             $rows = $result->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
@@ -204,8 +206,7 @@ class validate {
         $db = new DBMS($_SESSION["preferences"]["database"]["type"], $_SESSION["preferences"]["database"]['server'], $_SESSION["preferences"]["database"]["dbname"], $_SESSION["preferences"]["database"]["user"], $_SESSION["preferences"]["database"]["password"], $_SESSION["preferences"]["database"]["port"])or die('could not connect');
         $result = $db->query($sql);
         $outputarray = $result->fetchAll(PDO::FETCH_ASSOC);
-        if (count($outputarray) == 1) 
-        {
+        if (count($outputarray) == 1) {
             $output = $outputarray[0]['title'];
         }
         return $output;
@@ -241,15 +242,13 @@ class validate {
         return $output;
     }
 
-    function FieldDisplay($table, $displayfield, $inputfield, $inputcode) 
-    {
+    function FieldDisplay($table, $displayfield, $inputfield, $inputcode) {
         $output = '';
         $sql = "SELECT " . $displayfield . " FROM " . $table . " WHERE " . $inputfield . " = \"" . $inputcode . "\"";
         $db = new DBMS($_SESSION["preferences"]["database"]["type"], $_SESSION["preferences"]["database"]['server'], $_SESSION["preferences"]["database"]["dbname"], $_SESSION["preferences"]["database"]["user"], $_SESSION["preferences"]["database"]["password"], $_SESSION["preferences"]["database"]["port"]);
         $result = $db->query($sql);
         $outputarray = $result->fetch(PDO::FETCH_ASSOC);
-        if (count($outputarray) == 1) 
-        {
+        if (count($outputarray) == 1) {
             $output = $outputarray[$displayfield];
         }
         return $output;
@@ -304,7 +303,7 @@ class validate {
                     $disable = " disabled ";
                 }
                 if ($order_by) {
-                     $order_by = " ORDER BY " . $order_by . " " . $asc;
+                    $order_by = " ORDER BY " . $order_by . " " . $asc;
                 }
                 if ($where == "") {
                     $where = '';
@@ -376,16 +375,15 @@ class validate {
     }
 
 // End function DateCombo	
-    function DateDisplay($text,$classtext, $classdate, $defaultdate,$dateformat) 
-    {
-        if (isset($dateformat))
-        {
-            $dateformat =$_SESSION['preferences']['dateformat'];
-        }    
-        $rtndate = '<span class ='.$classtext.'>'.$text.'</span>'. 
-            '<span class='.$classdate.'>'.Date($dateformat,\strtotime($defaultdate)).'</span>';
+    function DateDisplay($text, $classtext, $classdate, $defaultdate, $dateformat) {
+        if (isset($dateformat)) {
+            $dateformat = $_SESSION['preferences']['dateformat'];
+        }
+        $rtndate = '<span class =' . $classtext . '>' . $text . '</span>' .
+                '<span class=' . $classdate . '>' . Date($dateformat, \strtotime($defaultdate)) . '</span>';
         return $rtndate;
     }
+
     function Password() {
         echo '<td><input type="button" value="Set Password"'
         . ' onclick="popup_show(\'popup\',\'popup_drag\',\'popup_exit\',\'screen-center\',0,0)"></td>';
@@ -468,7 +466,7 @@ class validate {
                         $selection = " selected ";
                     }
                 }
-                 $show_Combo_Box .= "<OPTION value=\"" . $row[0] . "\" " . $selection . ">" . $row[0] . "</OPTION> \n";
+                $show_Combo_Box .= "<OPTION value=\"" . $row[0] . "\" " . $selection . ">" . $row[0] . "</OPTION> \n";
             } // End WHILE
         }
         $show_Combo_Box .= "</SELECT>\n";
@@ -481,15 +479,13 @@ class validate {
 
 // End function FieldCombo_Box	
 
-    function fileComboBox($name, $directory, $css_class = "",$size = 10 , $PleaseSelect = true, $default = "", $noinput = false, $AllowNew = false, $newname = '', $new = false) {
-         $disable = false;
-         if ($new) 
-        {
+    function fileComboBox($name, $directory, $css_class = "", $size = 10, $PleaseSelect = true, $default = "", $noinput = false, $AllowNew = false, $newname = '', $new = false) {
+        $disable = false;
+        if ($new) {
             $show_Combo_Box = "<input type=\"text\" name=\"" . $name . "\"class=\"" . $css_class . "\" size=\"" . $size . "\" value=\"\">";
         } else {
-             $show_Combo_Box = "<select name=\"" . $name . "\"class=\"" . $css_class . "\" value=\"\">";
-            if ($noinput) 
-            {
+            $show_Combo_Box = "<select name=\"" . $name . "\"class=\"" . $css_class . "\" value=\"\">";
+            if ($noinput) {
                 $disable = " disabled ";
             }
             if (!$directory) {
@@ -509,19 +505,18 @@ class validate {
             }
             $choices = scandir($directory);
             foreach ($choices as $value) {
-                 $selection = "";
-                 if ($default) {
+                $selection = "";
+                if ($default) {
                     if ($value == $default) {
                         $selection = " selected ";
                     }
                 }
                 foreach ($_SESSION['displaydata']['fileextentions'] as $extention) {
                     $fileext = new SplFileInfo($extention);
-                    if ($fileext == $extention) 
-                        {
+                    if ($fileext == $extention) {
                         $show_Combo_Box .= "<OPTION value=\"" . $value . "\" " . $selection . ">" . $value . "</OPTION> \n";
-                        }
-                  }
+                    }
+                }
             }
         }
         $show_Combo_Box .= "</SELECT>\n";
@@ -537,9 +532,8 @@ class validate {
         $sql = 'SELECT creationdate FROM ' . $table . ' WHERE (' . $idfield . ' = \'' . $id . '\')';
         $db = new DBMS($_SESSION["preferences"]["database"]["type"], $_SESSION["preferences"]["database"]['server'], $_SESSION["preferences"]["database"]["dbname"], $_SESSION["preferences"]["database"]["user"], $_SESSION["preferences"]["database"]["password"], $_SESSION["preferences"]["database"]["port"]);
         $result = $db->query($sql)or die();
-        if ($result) 
-        {
-            $sql = 'UPDATE ' . $table . ' SET creationdate = now(),createdby = \''.$username. '\', updatedate = now(), updateby = \'' . $username . '\'   WHERE (' . $idfield . ' = \'' . $id . '\')';
+        if ($result) {
+            $sql = 'UPDATE ' . $table . ' SET creationdate = now(),createdby = \'' . $username . '\', updatedate = now(), updateby = \'' . $username . '\'   WHERE (' . $idfield . ' = \'' . $id . '\')';
         } else {
             $sql = 'UPDATE ' . $table . ' SET updatedate = now(), updateby = \'' . $username . '\'   WHERE (' . $idfield . ' = \'' . $id . '\')';
         }
@@ -788,12 +782,12 @@ class validate {
      */
 
     function do_redirect($url) {
-         global $_SERVER, $c, $SERVER_SOFTWARE, $SERVER_URL;
+        global $_SERVER, $c, $SERVER_SOFTWARE, $SERVER_URL;
 
         // Replace any '&amp;' with '&' since we don't want that in the HTTP header.
-         $url = str_replace('&amp;', '&', $url);
+        $url = str_replace('&amp;', '&', $url);
 
-         if (empty($SERVER_SOFTWARE))
+        if (empty($SERVER_SOFTWARE))
             $SERVER_SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
 
         // $SERVER_URL should end in '/', but we may not have it yet if we are
@@ -827,5 +821,4 @@ class validate {
     }
 
 }
-
 ?>

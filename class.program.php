@@ -1,8 +1,12 @@
 <?php
-
 /**
- * @author W RICHARD WOODS
- * @copyright 2011
+ * *****************************************************
+ * @file class.program.php
+ * @brief The program class handles all program functions
+ * @author W.R.(Ric)Woods
+ * @version  1.0
+ * @copyright 2017
+ * @date 13 September 2017
  */
 require_once "class.pdodatabase.php";
 require_once "class.validate.php";
@@ -12,24 +16,22 @@ class program
 // setting up program table		  
 	function insertrecord() 
 	{
-		$sql = 'INSERT INTO program (firstname)VALUES ("")';
+		$sql = 'INSERT INTO program (name)VALUES ("")';
         	$db = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]["database"]['server'],$_SESSION["preferences"]["database"]["dbname"] ,$_SESSION["preferences"]["database"]["user"],$_SESSION["preferences"]["database"]["password"],$_SESSION["preferences"]["database"]["port"]);
 		$results = $db->query($sql);
 		if ($results) 
  		{
+                    $rtnanswer = $db->getLatestId('program','programid');
                     $validate = new validate;
-                    $validate->DateStamp('program','programid',$row[0]['programid'],$_SESSION['login']['username'], $_SESSION["preferences"]["database"]["dbname"]);
+                    $validate->DateStamp('program','programid',$rtnanswer,$_SESSION['login']['username'], $_SESSION["preferences"]["database"]["dbname"]);
                     $msg = new messages;
                     $msg->DisplayMessage('recadd');
-                    $rtnanswer = $db->getLatestId('program','programid');
                     return $rtnanswer;
                 }     
 	}
-	function updaterecord($programid,$firstname,$lastname,$gender,$birthdate,$mobilityplusid) 
+	function updaterecord($programid,$name,$department,$status,$description) 
 	{
-//                $date = date_parse_from_format($_SESSION['preferences']['dateformat'],$birthdate );
-//                $birthdate = mktime(0, 0, 0, $date['month'], $date['day'], $date['year']);
-		$sql = 'UPDATE program SET firstname= \''.$firstname.'\',lastname= \''.$lastname.'\',fullname= \''.trim($firstname).' '.trim($lastname).'\',gender= \''.$gender.'\',birthdate= \' '. $birthdate. '\', mobilityplusid=\''. $mobilityplusid.'\' WHERE programid = '.$programid;
+		$sql = 'UPDATE program SET name= \''.$name.'\',department= \''.$department.'\',status= \''.$status.'\',description= \''.$description.'\' WHERE programid = '.$programid;
                 $db = new DBMS($_SESSION["preferences"]["database"]["type"],$_SESSION["preferences"]["database"]['server'],$_SESSION["preferences"]["database"]["dbname"] ,$_SESSION["preferences"]["database"]["user"],$_SESSION["preferences"]["database"]["password"],$_SESSION["preferences"]["database"]["port"]);
 		$results = $db->query($sql);
                 if ($results)

@@ -5,18 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <link href="style.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="popup-window.js"></script>
-<script language="javascript">
-function noshow() 
-{
-  document.ctrtype('div1').style.display='password';
-  document.ctrtype('div2').style.display='';
-}
-function show() 
-{
-  document.ctrtype('div1').style.display='';
-  document.ctrtype('div2').style.display='text';
-}
-</script>
         <TITLE>KWA Login Setup</TITLE>
         <?php
         require_once "class.preferences.php";
@@ -94,6 +82,26 @@ function show()
             $_SESSION["newmenu"] = '';
         if (!isset($_SESSION["tbllogin"]['usermenuname']))
             $_SESSION["tbllogin"]['usermenuname'] = '';
+        if (!isset($_POST['shownoshowpass']))
+            $_POST['shownoshowpass'] = 'Hide';
+         if (!isset($_POST['shownoshowconfpass']))
+            $_POST['shownoshowconfpass'] = 'Hide';
+       if ($_POST['shownoshowpass']== 'Show')
+        {
+             $ctrtype='text';
+             $valshow = 'Show';
+        }else{
+             $ctrtype='password';
+             $valshow = 'Hide';
+        }    
+        if ($_POST['shownoshowconfpass']== 'Show')
+        {
+             $confctrtype='text';
+             $confvalshow = 'Show';
+        }else{
+             $confctrtype='password';
+             $confvalshow = 'Hide';
+        }    
         if ($_POST['refreshlogin'] == 'Refresh') {
             if ($_POST['selectlogin'] == -99) {
                 $_SESSION["displaydata"]["displaygrid"] = false;
@@ -352,13 +360,13 @@ function show()
         echo '<tr>'
             .     '<td class="subtitle">Password'
             .            '<input name="password" class="body" value="'.$password.'" type="'.$ctrtype.'" size=10 >'
-            .            '<img src="images/eye 1.png" id="eyeid" width="16" height="16" border="0" onclick="show()" alt="Show Password">'
+            .        '<input type="button" name="shownoshowpass" value='.$valshow.'>'
             .      '</td>';
         echo '</tr>'
             .'<tr>'
             .      '<td class="subtitle">Confirm Password'
-            .            '<input name="confpassword" class="body" value="'.$confpassword.'" type="'.$ctrtype.'" size=10>'
-            .           '<img src="images/eye 1.png" id="confeyeid" width="16" height="16" border="0" onfocus="show()" alt="Show Password">'
+            .            '<input name="confpassword" class="body" value="'.$confpassword.'" type="'.$confctrtype.'" size=10>'
+                .        '<input type="button" name="shownoshowcomfpass" value='.$confvalshow.'>'
            .      '</td>'
            . '</tr>'
            . '<tr>'    

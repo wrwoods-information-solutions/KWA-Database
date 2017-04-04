@@ -51,7 +51,7 @@
             </td>
         </tr>
     </table>    
-        <form id="prefmaster" name="preferences"  action="setuppreferences.php" method="post" enctype="multipart/form-data" >
+        <form id="prefmaster" name="preferences"  action="prefCalendar.php" method="post" enctype="multipart/form-data" >
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                         <td class="subtitle">Date Format</td>

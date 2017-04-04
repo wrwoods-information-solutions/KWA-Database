@@ -586,8 +586,7 @@ $pref->loadmenu();
             <table class="tbl" width="100%">
                 <tr>
                     <td class ='subtitle'>First Name&nbsp:
-<?PHP
-echo'<input name="firstname" class="body" type="text" size=25 value="' . $_SESSION["person"]["firstname"] . '">';
+<?PHPecho'<input name="firstname" class="body" type="text" size=25 value="' . $_SESSION["person"]["firstname"] . '">';
 ?>        
                     </td>
                     <td class="subtitle">Gender&nbsp:

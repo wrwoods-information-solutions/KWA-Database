@@ -1,0 +1,7 @@
+1,"Norman","Collier","612 Guelph St.","Kitchener","N2H 5Y6","5197443030","5198976676","normiec@gmail.com",2012-2-21 0:00:00,
+2,"Chris"," Wilde","529-6 Parkside Dr.","Waterloo","N2L 4X7",,"5195736457","cwilde.kwaa@hotmail.ca",2012-5-14 0:00:00,
+3,"Corey","Gale",,,,,"5195004944",,,
+4,"Duaa","Alaghar",,,"N2M 2A6","5195766366",,,,
+5,"Jason","Sheridan","186 Sliverwood","Waterloo","N2T 2R9","2267508302",,,,
+6,"Anisha","Mahant","317 -C Spruce St.",,,"9057949902",,,,
+7,"Connor","Johnston",,,,,"2269729133",,,

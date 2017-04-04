@@ -1,4 +1,14 @@
 <?PHP 
+/**
+ * *****************************************************
+ * @file class.messages.php
+ * @brief The messages class handles all messages functions
+ * @author W.R.(Ric)Woods
+ * @version  1.0
+ * @copyright 2017
+ * 
+ * @date 13 February 2017
+ */
 define('FF_OPACITY_LEVEL',5);
 define('IE_OPACITY_LEVEL',70);
 define('DEFAULT_BORDER_STYLE',"red 1px solid");

@@ -64,7 +64,7 @@
 // Load the displaydata class
 	$codesgrid = new DisplayData($db);
 	$codesgrid->setdisplaydata('codesgrid');
-        $codesgrid->SetTemplate('displaygrid',$db);
+        $codesgrid->SetTemplate('Displaygrid',$db);
         $codesgrid->setURLConstant("setupcodes.php");
 // Set the query, select all rows from the people table
 	$codesgrid->setQuery("codesid,seqno,code,title,description", "codes","codesid","(tblname = '".$_SESSION["displaydata"]["tablename"] ."') and (fldname = '".$_SESSION["displaydata"]["fieldname"]."')");

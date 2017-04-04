@@ -109,6 +109,7 @@ class DBMS{
  				return $this->con;
 			}catch(PDOException $e){
 				$this->err_msg = "Error: ". $e->getMessage();
+                                echo $this->err_msg; 
 				return false;
 			}
 		}else{

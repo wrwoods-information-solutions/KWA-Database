@@ -22,6 +22,15 @@ $login->checklogout();
 <?PHP
 $pref->header('RequestInput');
 ?>
+        <table class="tbl" width="100%">
+            <tr>
+                <td colspan="13">
+        <?PHP
+        $pref->loadmenu();
+        ?>
+                </td>
+            </tr>
+        </table>    
 <table width="100%" border="0" background="Images/HeavenBackground.jpg">
 	<tr >
 		<td width="100%" align="center">

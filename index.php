@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link href="style.css" rel="stylesheet" type="text/css"></link>
@@ -53,14 +53,14 @@ if ($_POST['LC_ACTION']== 'Login')
               </tr>
               <tr>
                     <form id="login" name="login" method="post" action="home.php?LC_ACTION=Login"  enctype="multipart/form-data">
-                        <td><input type="text" name="username" class="smbody" size="20" value="" />          </td>
+             <td><input type="text" name="username" class="smbody" size="20" value="" />          </td>
                         <td><input type="password" name="password" class="smbody" value="" /></td>
                         <td><input type="submit" name="LC_ACTION" class="smbody" value="Login" /></td>
-                    </form>
-              </tr>  
-        </table></td>
+  </form>                        
+                </tr>  
+         </table></td>
   </tr>
-</table>
+</table>   
 <table width="100%" background="Images/HeavenBackground.jpg">
   <tr>
    <td colspan="3" align="center" class="headtitle">Information Management System</td>
@@ -81,7 +81,7 @@ if ($_POST['LC_ACTION']== 'Login')
     <td colspan="3" align="center" class="title">e-mail: kwaa@kwa.on.ca       web: http://www.kwa.on.ca</td> 
   </tr>
   <tr>
-      <td>&nbsp;</td      
+      <td>&nbsp;</td>      
   </tr>  
   <tr>
     <td colspan="3" align="center" class="smbody">Created by</td>
